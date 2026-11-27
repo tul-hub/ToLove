@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OTG কিবোর্ডে টাইপিং শিখি – বাংলা ও English</title>
+<meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#f4efe6"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Hind+Siliguri:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Noto+Serif+Bengali:wght@600&family=Noto+Sans+Bengali:wght@400;600&family=Baloo+Da+2:wght@500&family=Tiro+Bangla&family=Anek+Bangla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Design file — paper, ink, one rose accent. Display: Fraunces / Noto Serif Bengali. Text: Hind Siliguri. Keys: JetBrains Mono. No gradients, no emoji, no scroll effects. */
+:root{--bg:#f4efe6;--cd:#fbf8f2;--ink:#1f1b16;--mu:#6b6258;--ac:#c2274d;--ln:#ddd3c3;--ok:#2f7d4f;--bad:#c0392b;--key:#fffdf8;--skin:#e6b595;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#181512;--cd:#211d19;--ink:#efe8dc;--mu:#a89e90;--ac:#ff5a7e;--ln:#3a342d;--ok:#6fcf97;--bad:#ff7b6b;--key:#2a251f;--skin:#b98363;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#181512;--cd:#211d19;--ink:#efe8dc;--mu:#a89e90;--ac:#ff5a7e;--ln:#3a342d;--ok:#6fcf97;--bad:#ff7b6b;--key:#2a251f;--skin:#b98363;color-scheme:dark}
+html,body{height:100%}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 'Hind Siliguri','Noto Sans Bengali','Nirmala UI',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+.i{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.17em}
+#rot{display:none;position:fixed;inset:0;z-index:50;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:24px;font-size:1.1rem}
+@media(orientation:portrait) and (max-width:900px){#rot{display:flex}}
+.ph{width:54px;height:92px;border:3px solid var(--ink);border-radius:10px;animation:rt 2.4s ease-in-out infinite}
+@keyframes rt{0%,30%{transform:rotate(0)}60%,100%{transform:rotate(-90deg)}}
+header{display:flex;align-items:center;gap:14px;padding:4px 14px;border-bottom:1px solid var(--ln);min-height:58px;flex:none}
+.hw{width:52px;height:46px;perspective:260px;flex:none;display:grid;place-items:center}
+.beat{transform-style:preserve-3d;animation:bt 1.1s ease-in-out infinite}
+.h3{position:relative;width:40px;height:36px;transform-style:preserve-3d;animation:sp 6s linear infinite}
+.h3 svg{position:absolute;inset:0;width:100%;height:100%}
+@keyframes sp{to{transform:rotateY(360deg)}}
+@keyframes bt{0%,100%{transform:scale(1)}15%{transform:scale(1.2)}30%{transform:scale(1)}45%{transform:scale(1.12)}}
+.dd{font:italic 600 1.25rem/1.1 'Fraunces','Noto Serif Bengali',serif;color:var(--ac);flex:none}
+.dd small{display:block;font:400 .66rem 'Hind Siliguri',sans-serif;font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+nav{display:flex;gap:2px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav>:first-child{margin-left:auto}nav>:last-child{margin-right:auto}
+button{font:inherit;color:var(--ink);background:var(--cd);border:1px solid var(--ln);border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+button:hover{border-color:var(--ac)}button:active{transform:translateY(1px)}
+nav button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:8px 10px}
+nav button.on{border-bottom-color:var(--ac);color:var(--ac)}
+button.pr{background:var(--ac);border-color:var(--ac);color:#fff}
+.tabs button.on,.dots button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.g{font-weight:600}
+#kst{font-size:.75rem;color:var(--mu);display:flex;align-items:center;gap:6px;flex:none}
+#kst:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mu)}
+#kst.ok:before{background:var(--ok)}
+@media(max-width:760px){nav span{display:none}#kst{font-size:0}#kst:before{width:10px;height:10px}}
+main{flex:1;min-height:0;overflow:auto;padding:12px 16px}
+.pg{display:none;min-height:100%}
+.pg.on{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;align-items:center}
+.pg.f.on{display:block}
+h1,h2{font-family:'Fraunces','Noto Serif Bengali',serif;font-weight:600;margin:0 0 8px;line-height:1.25}
+h1{font-size:clamp(1.3rem,2.9vw,2rem)}h2{font-size:1.4rem}
+p{margin:0 0 10px;color:var(--mu)}
+.ix{list-style:none;margin:12px 0 0;padding:0}
+.ix button{display:grid;grid-template-columns:34px 80px 1fr;width:100%;text-align:left;border:0;border-top:1px solid var(--ln);border-radius:0;background:none;padding:7px 2px}
+.ix i{font:500 .8rem 'JetBrains Mono',monospace;font-style:normal;color:var(--ac)}.ix b{font-weight:600}.ix span{color:var(--mu)}
+.cap{font-size:.8rem;text-align:center;margin:4px 0 0}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots button{padding:2px 10px}
+.lg{display:flex;flex-wrap:wrap;gap:10px;font-size:.78rem;color:var(--mu);margin-top:10px}.lg i{font-style:normal;border-left:10px solid var(--z);padding-left:5px}
+.kbw{min-width:0}.kbs{display:block;width:100%;max-width:660px;height:auto;margin:auto}
+.kbs rect{fill:var(--key);stroke:var(--z);stroke-width:2.5;transition:fill .15s}
+.kbs text{font:500 15px 'JetBrains Mono',var(--fb),monospace;fill:var(--ink);text-anchor:middle;pointer-events:none}
+.kbs text.s2{font-size:9px;fill:var(--mu)}
+.kbs g.mk rect{fill:color-mix(in srgb,var(--z) 26%,var(--key))}
+.kbs g.hl rect{fill:var(--z)}.kbs g.ok rect{fill:var(--ok)}.kbs g.bad rect{fill:var(--bad)}
+.kbs g.hl text,.kbs g.ok text,.kbs g.bad text{fill:#fff}
+.pm{fill:var(--skin);opacity:.5}.fg{stroke:var(--skin);stroke-width:16;stroke-linecap:round;opacity:.72}
+.tp{fill:var(--skin);stroke:var(--ink);stroke-opacity:.3;stroke-width:1.5}.tp.on{fill:var(--ac)}
+.eng{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;align-items:center}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}.tabs button{padding:2px 9px;font-size:.82rem}.eng .row{margin:4px 0}.eng .row button{padding:4px 10px;font-size:.85rem}
+.tgt{font:500 clamp(1.15rem,3vw,1.7rem)/1.8 'Hind Siliguri',sans-serif;padding:8px 12px;margin:10px 0 4px;background:var(--cd);border:1px solid var(--ln);border-radius:8px;white-space:pre-wrap;word-break:break-word;min-height:3.6em}
+.tgt .ok{color:var(--ok)}.tgt .bad{background:var(--bad);color:#fff;border-radius:3px}.tgt .cur{border-bottom:3px solid var(--ac)}
+.lt{font:500 .95rem 'JetBrains Mono',monospace;color:var(--mu);min-height:1.5em}.lt u{color:var(--ok);text-decoration:none}
+.hint{font-weight:600;color:var(--ac);min-height:1.5em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;margin:6px 0;font-size:.72rem;color:var(--mu)}.stats b{display:block;font-size:1.15rem;color:var(--ink)}
+.msg{min-height:1.4em;font-weight:600;color:var(--ok)}
+details{margin-top:14px}summary{cursor:pointer;font-weight:600}
+.chips span{display:inline-block;margin:3px;padding:1px 9px;border:1px solid var(--ln);border-radius:6px}.chips b{color:var(--ac)}
+
+@font-face{font-family:'Kalpurush';src:local('Kalpurush'),local('Kalpurush Regular')}
+@font-face{font-family:'SutonnyMJ';src:local('SutonnyMJ'),local('SutonnyMJ Regular'),local('SutonnyOMJ')}
+:root{--fb:'Hind Siliguri','Noto Sans Bengali','Noto Serif Bengali','Nirmala UI','Kalpurush','SolaimanLipi','Siyam Rupali','Vrinda','Lohit Bengali',sans-serif;--fe:'Hind Siliguri',system-ui,sans-serif;--fs:1}
+@media(orientation:portrait) and (max-width:900px){#rot{display:none}}
+@media(hover:none) and (pointer:coarse) and (orientation:portrait){#rot{display:flex}}
+.tgt{font-family:var(--fe);font-size:calc(clamp(1.15rem,3vw,1.7rem)*var(--fs))}.tgt.bn{font-family:var(--fb)}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-top:14px}
+.pb{height:6px;background:var(--ln);border-radius:4px;overflow:hidden}.pb i{display:block;height:100%;width:0;background:var(--ac);transition:width .15s}
+.ov{display:none;position:fixed;inset:0;z-index:40;background:#0008;align-items:center;justify-content:center;padding:10px}.ov.on{display:flex}
+.pn{background:var(--bg);border:1px solid var(--ln);border-radius:14px;padding:14px;max-width:520px;width:100%;max-height:96%;overflow:auto}
+.pn label{display:block;margin:9px 0 3px;font-weight:600;font-size:.85rem}
+select,input[type=file]{font:inherit;color:var(--ink);background:var(--cd);border:1px solid var(--ln);border-radius:8px;padding:5px;max-width:100%}.pn select{width:100%}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;margin:10px 0}.kp div{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:8px;text-align:center;font-size:.75rem;color:var(--mu)}.kp b{display:block;font-size:1.3rem;color:var(--ink)}
+.bars{display:flex;align-items:flex-end;gap:4px;height:80px}.bars i{flex:1;background:var(--ac);border-radius:3px 3px 0 0;opacity:.85}
+.bl{display:flex;gap:4px;font-size:.62rem;color:var(--mu)}.bl span{flex:1;text-align:center}
+#sx ul{list-style:none;padding:0;margin:6px 0;font-size:.85rem}#sx li{padding:4px 0;border-top:1px solid var(--ln);color:var(--mu)}
+.eng .stats{grid-template-columns:repeat(4,1fr)}
+
+.nokb .kbw{display:none}.nokb .eng{grid-template-columns:1fr}.nohn .hint{visibility:hidden}
+input[type=text],textarea{font:inherit;color:var(--ink);background:var(--cd);border:1px solid var(--ln);border-radius:8px;padding:6px 8px;width:100%}
+#pj label{display:block;margin:8px 0 3px;font-weight:600;font-size:.85rem}
+#enr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 4px;font-weight:600}#enm{display:block;color:var(--mu);font-size:.78rem;min-height:1.2em;margin-bottom:8px}.pji span{color:var(--mu);font-size:.8rem;margin-left:6px}.pji .row{margin:6px 0 0}
+
+.wtb{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:6px 0;border-bottom:1px solid var(--ln)}.wtb::-webkit-scrollbar{display:none}
+.wtb button,.bt{padding:4px 9px}.wtb select{padding:4px;width:auto}.sp{width:1px;height:22px;background:var(--ln);flex:none}
+.bt{font:inherit;background:var(--cd);border:1px solid var(--ln);border-radius:8px;cursor:pointer;white-space:nowrap;display:inline-flex;gap:5px;align-items:center}.bt:hover{border-color:var(--ac)}
+#wtt{width:190px;flex:none;font-weight:600}#wkc{width:30px;height:28px;padding:0;border:1px solid var(--ln);border-radius:6px;background:none;flex:none}
+#wp{position:relative}.wsheet{padding:14px 0 6px}
+.wd{background:#fff;color:#1b1b1b;font:16px/1.75 var(--fb);max-width:794px;min-height:60vh;margin:0 auto;padding:36px 48px;border:1px solid var(--ln);border-radius:4px;outline:none;word-break:break-word;color-scheme:light}
+.wd table{border-collapse:collapse;margin:8px 0}.wd td{border:1px solid #999;padding:4px 8px;min-width:48px}.wd p{margin:0 0 6px;color:inherit}.wd h1,.wd h2,.wd h3{color:inherit;margin:10px 0 6px}
+.wsb{display:flex;gap:16px;flex-wrap:wrap;font-size:.78rem;color:var(--mu);padding:4px 2px 10px}.wsb #wms{color:var(--ok);font-weight:600}
+.dg{color:var(--bad);border-color:var(--bad)}#dcs{display:block;color:var(--mu);margin:4px 0 2px}#toast{display:none;position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:.85rem}
+
+/* UI auto-hide while typing */
+header,.tabs,.eng .row,.eng .stats,.eng .lt,.eng .msg,#enr,#enm,#jch,.hint{transition:opacity .35s,max-height .35s,padding .35s,margin .35s,min-height .35s,border-color .35s}
+body.typing header{max-height:0;min-height:0;padding-top:0;padding-bottom:0;opacity:0;overflow:hidden;border-color:transparent;pointer-events:none}
+body.typing .tabs,body.typing .eng .row,body.typing #enr,body.typing #enm,body.typing #jch,body.typing .hint{opacity:0;pointer-events:none}
+body.typing .eng .stats{opacity:.35}
+body.typing main{padding-top:6px}
+body.typing{cursor:none}
+#jch{margin-top:10px}#jch summary{cursor:pointer;color:var(--ac);font-weight:600}
+#jcc{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+#jcc span{border:1px solid var(--ln);background:var(--cd);border-radius:8px;padding:3px 9px;font-size:.84rem;white-space:nowrap}
+#jcc b{font:600 1.15rem 'Hind Siliguri','Noto Sans Bengali',sans-serif;color:var(--ac);margin-right:6px}
+#jcc i{font:normal .78rem 'JetBrains Mono',monospace;color:var(--mu);letter-spacing:.04em}
+#jcc h4{flex:0 0 100%;margin:8px 0 0;font-size:.82rem;color:var(--mu)}
+</style></head><body>
+<svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3zM4 17a3 3 0 013-3h12"/></symbol>
+<symbol id="i-kb" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+<symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 5v5h-5M20 10a8 8 0 10-2 6"/></symbol>
+<symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></symbol><symbol id="i-fold" viewBox="0 0 24 24"><path d="M3 6a2 2 0 012-2h4l2 2h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></symbol><symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5M4 9h10a6 6 0 010 12h-3"/></symbol><symbol id="i-redo2" viewBox="0 0 24 24"><path d="M15 14l5-5-5-5M20 9H10a6 6 0 000 12h3"/></symbol><symbol id="i-al" viewBox="0 0 24 24"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></symbol><symbol id="i-ac" viewBox="0 0 24 24"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></symbol><symbol id="i-ar" viewBox="0 0 24 24"><path d="M4 6h16M10 10h10M4 14h16M10 18h10"/></symbol><symbol id="i-aj" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></symbol><symbol id="i-ul" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol><symbol id="i-ol" viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10M4 5l1.5-1v5M4 14h3l-3 4h3"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4"/></symbol><symbol id="i-open" viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></symbol></defs></svg>
+<div id="rot"><div class="ph"></div><b>ফোনটি আড়াআড়ি (landscape) করুন</b><span>এই অ্যাপ শুধু landscape মোডে চলে।</span></div>
+<header>
+<div class="hw"><div class="beat"><div class="h3"></div></div></div>
+<div class="dd"><small>Dedicated to</small>Sonia</div>
+<nav id="nav">
+<button class="on" data-s="home"><svg class="i"><use href="#i-home"/></svg> <span>হোম</span></button>
+<button data-s="basics"><svg class="i"><use href="#i-book"/></svg> <span>বেসিক</span></button>
+<button data-s="en"><svg class="i"><use href="#i-kb"/></svg> <span>English</span></button><button data-s="wp"><svg class="i"><use href="#i-doc"/></svg> <span>ডকুমেন্ট</span></button>
+<button data-s="bn"><span class="g" style="display:inline">অ</span> <span>বাংলা</span></button>
+<button data-s="test"><svg class="i"><use href="#i-bolt"/></svg> <span>টেস্ট</span></button>
+<button data-s="pr"><svg class="i"><use href="#i-target"/></svg> <span>প্র্যাকটিস</span></button><button data-s="sx"><svg class="i"><use href="#i-chart"/></svg> <span>পরিসংখ্যান</span></button><button data-s="lang"><svg class="i"><use href="#i-kb"/></svg> <span>বিজয়</span></button><button data-s="pj"><svg class="i"><use href="#i-fold"/></svg> <span>প্রজেক্ট</span></button></nav>
+<span id="kst" title="OTG কিবোর্ডে যেকোনো কি চাপুন">কিবোর্ড অপেক্ষায়</span>
+<button id="gear" title="সেটিংস"><svg class="i"><use href="#i-gear"/></svg></button><button id="fs" title="ফুলস্ক্রিন"><svg class="i"><use href="#i-full"/></svg></button>
+</header>
+<main>
+<section id="home" class="pg on">
+<div><h1>ফোনে OTG কিবোর্ড লাগান। দশ আঙুলে বাংলা ও English টাইপ শিখুন।</h1>
+<p>কোন আঙুল কোন কি-তে যাবে, পর্দায় হাত নড়ে দেখিয়ে দেবে। তারপর প্রতিটি লেভেলে নিজে অভ্যাস করুন।</p>
+<ol class="ix">
+<li><button data-s="basics"><i>01</i><b>বেসিক</b><span>হাতের বসা, হোম রো, সব সারি</span></button></li>
+<li><button data-s="en"><i>02</i><b>English</b><span>ছয় লেভেল — হোম রো থেকে বাক্য</span></button></li>
+<li><button data-s="bn"><i>03</i><b>বাংলা</b><span>ফোনেটিক টাইপ, চার লেভেল</span></button></li>
+<li><button data-s="test"><i>04</i><b>টেস্ট</b><span>গতি ও নির্ভুলতা মাপুন</span></button></li><li><button data-s="pr"><i>05</i><b>প্র্যাকটিস</b><span>এলোমেলো শব্দ, দুর্বল কি, নিজের লেখা</span></button></li><li><button data-s="sx"><i>06</i><b>পরিসংখ্যান</b><span>গতি, নির্ভুলতা, ধারাবাহিকতা</span></button></li><li><button data-s="lang"><i>07</i><b>বিজয়</b><span>বিজয় কিবোর্ড লেআউট — Unicode ও ANSI</span></button></li><li><button data-s="pj"><i>08</i><b>প্রজেক্ট</b><span>সেভ, খুলুন, ব্যাকআপ</span></button></li><li><button data-s="wp"><i>09</i><b>ডকুমেন্ট</b><span>Word-এর মতো বিজয় টাইপ, docx / xlsx ইমপোর্ট-এক্সপোর্ট</span></button></li></ol><div class="card" id="hg"></div></div>
+<div><div class="kbw" id="kh"></div><p class="cap">“sonia” লিখতে আঙুলের পথ</p></div>
+</section>
+<section id="basics" class="pg">
+<div><h2 id="stT"></h2><p id="stD"></p>
+<div class="row"><button id="pv"><svg class="i"><use href="#i-prev"/></svg></button><button id="play"></button><button class="pr" id="nx"><svg class="i"><use href="#i-next"/></svg></button></div>
+<div class="dots" id="dots"></div>
+<div class="lg"><i style="--z:hsl(12 55% 50%)">কনিষ্ঠা</i><i style="--z:hsl(38 70% 46%)">অনামিকা</i><i style="--z:hsl(150 40% 40%)">মধ্যমা</i><i style="--z:hsl(205 60% 50%)">তর্জনী</i><i style="--z:hsl(30 6% 55%)">বুড়ো আঙুল</i></div></div>
+<div class="kbw" id="bk"></div>
+</section>
+<section id="en" class="pg f"><div class="eng" id="enp"></div></section>
+<section id="bn" class="pg f"><div class="eng" id="bnp"></div>
+<details><summary>বর্ণ ও কি-র তালিকা</summary><p>ইংরেজি কিবোর্ডে ধ্বনি অনুযায়ী লিখুন: <b>ami</b> → আমি। পরপর দুই ব্যঞ্জন লিখলে যুক্তবর্ণ হয় (n + d → ন্দ)। বড় হাতের অক্ষর আলাদা ধ্বনি (t = ত, T = ট)।</p><div class="chips" id="bch"></div></details></section>
+<section id="test" class="pg f"><div class="eng" id="tp"></div></section>
+<section id="pr" class="pg f"><div class="eng" id="prp"></div>
+<details><summary>নিজের লেখা দিয়ে অভ্যাস</summary><p>যেকোনো লেখা পেস্ট করুন। বাংলা হলে ফোনেটিক (ami, tumi) ধাঁচে লিখুন।</p><textarea id="ct" rows="3" style="width:100%;font:inherit;background:var(--cd);color:var(--ink);border:1px solid var(--ln);border-radius:8px;padding:8px"></textarea><div class="row"><select id="cl"><option value="en">English</option><option value="bn">বাংলা (ফোনেটিক)</option></select><button class="pr" id="cg">শুরু করুন</button><button id="cs">প্রজেক্ট হিসেবে সংরক্ষণ</button></div></details></section>
+<section id="lang" class="pg f"><div id="enr">বাংলা লেখার ধরন:<div class="tabs" id="enb"><button data-e="uni">Unicode বাংলা</button><button data-e="ansi">Bijoy ANSI (SutonnyMJ)</button></div></div><small id="enm"></small><div class="eng" id="lgp"></div><details id="jch"><summary>সব যুক্তাক্ষরের কী-চার্ট (বিজয়) — কোন কী পরপর চাপবেন</summary><small>নিয়ম: প্রথম ব্যঞ্জন → <b>g</b> (হসন্ত ্) → পরের ব্যঞ্জন। <b>⇧</b> মানে Shift সহ। কার (ি ে ৈ) আগে টাইপ হয়।</small><div id="jcc"></div></details></section>
+<section id="pj" class="pg f"><h2>প্রজেক্ট</h2><p>নিজের লেখা সেভ করুন, পরে খুলে অভ্যাস করুন। সব অটোসেভ হয়।</p>
+<div class="card"><label>নাম</label><input type="text" id="pn1"><label>ইনপুট মেথড</label><select id="pm"></select><label>লেখা</label><textarea id="pt1" rows="4"></textarea>
+<div class="row"><button class="pr" id="psv">সংরক্ষণ</button><button id="pnw">নতুন</button><small id="pjm"></small></div></div><div id="pl"></div>
+<div class="card"><b>ব্যাকআপ</b><div class="row"><button id="bk1">সব ডেটা ডাউনলোড</button><label style="margin:0"><input type="file" id="pi" accept=".json"> ফাইল থেকে রিস্টোর / প্রজেক্ট ইমপোর্ট</label><button id="rall">সব রিসেট</button></div></div></section>
+<section id="wp" class="pg f"><div class="wtb" id="wt1"></div><div class="wtb" id="wt2"></div><div class="wsheet"><div id="wd" class="wd" contenteditable="true" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off"></div></div><div class="wsb"><span id="wms"></span><span id="wc"></span><span>Ctrl+Space — বাংলা / English বদল</span></div></section><section id="sx" class="pg f"></section></main>
+<div class="ov" id="ov"><div class="pn"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">সেটিংস</h2><button id="sc">বন্ধ</button></div>
+<label>বাংলা ফন্ট</label><select id="sfb"></select><label>English ফন্ট</label><select id="sfe"></select>
+<label>বাংলা লেখার ধরন</label><select id="sen"><option value="uni">Unicode বাংলা (সব ডিভাইসে)</option><option value="ansi">Bijoy ANSI (SutonnyMJ ফন্ট লাগবে)</option></select>
+<label>লেখার আকার</label><select id="ssz"><option value="0.85">ছোট</option><option value="1">মাঝারি</option><option value="1.25">বড়</option><option value="1.5">অতি বড়</option></select>
+<label>থিম</label><select id="sth"><option value="auto">অটো</option><option value="light">লাইট</option><option value="dark">ডার্ক</option></select>
+<label>দৈনিক লক্ষ্য (মিনিট)</label><select id="sgl"><option>5</option><option>10</option><option>15</option><option>20</option><option>30</option></select>
+<label><input type="checkbox" id="sfs"> প্রথম টাচ বা কি-তে অটো ফুলস্ক্রিন</label>
+<label><input type="checkbox" id="sah"> টাইপ করার সময় UI অটো হাইড</label>
+<label><input type="checkbox" id="o_snd"> কি-র শব্দ</label><label><input type="checkbox" id="o_st"> কড়া মোড — ভুল কি গ্রহণ করবে না</label><label><input type="checkbox" id="o_kb"> অন-স্ক্রিন কিবোর্ড ও হাত দেখান</label><label><input type="checkbox" id="o_lb"> কি-র উপর ভাষার বর্ণ দেখান</label><label><input type="checkbox" id="o_hn"> পরের কি-র হিন্ট দেখান</label><label><input type="checkbox" id="o_an"> শেষ হলে নিজে পরের লাইনে যান</label>
+<label>ফন্ট ফাইল যোগ করুন (.ttf .otf .woff)</label><div class="row"><select id="sfn" style="width:auto"><option>SutonnyMJ</option><option>Kalpurush</option><option>UserFont</option></select><input type="file" id="ff" accept=".ttf,.otf,.woff,.woff2"></div>
+<small id="fm" style="color:var(--mu)">SutonnyMJ বা Kalpurush ডিভাইসে ইনস্টল থাকলে সরাসরি চলবে, না থাকলে ফাইল দিন।</small>
+<div id="spv" class="tgt bn"></div><div class="tgt">The quick brown fox jumps over the lazy dog.</div><div class="card" id="dcl"><b>ডেটা মুছুন</b><small id="dcs"></small><div class="row"><button data-c="sx">পরিসংখ্যান ও ইতিহাস</button><button data-c="wk">দুর্বল কি</button><button data-c="pj">প্রজেক্ট ও নিজের লেখা</button><button data-c="wdoc">ডকুমেন্ট</button><button data-c="uf">যোগ করা ফন্ট</button><button data-c="cfg">সেটিংস রিসেট</button></div><div class="row"><button class="dg" data-c="all">সব ডেটা মুছুন</button></div></div></div></div><div id="toast"></div>
+<script>
+const $=(q,e=document)=>e.querySelector(q),$$=(q,e=document)=>[...e.querySelectorAll(q)];
+/* heart */
+(function(){const P='M16 28C16 28 1 18 1 9C1 4 5 1 9 1C12 1 15 3 16 6C17 3 20 1 23 1C27 1 31 4 31 9C31 18 16 28 16 28Z';let h='';for(let z=-6;z<=6;z++)h+='<svg viewBox="0 0 32 29" style="transform:translateZ('+z+'px)"><path d="'+P+'" fill="hsl(346 78% '+(36+(z+6)*2)+'%)"/></svg>';$('.h3').innerHTML=h})();
+/* keyboard with hands */
+const ROWS=['1234567890-=','qwertyuiop[]',"asdfghjkl;'",'zxcvbnm,./'],OF=[0,12,24,36],FC=[0,1,2,3,3,4,4,5,6,7,7,7],ZN=[0,1,2,3,3,2,1,0,4,4];
+const Z=['hsl(12 55% 50%)','hsl(38 70% 46%)','hsl(150 40% 40%)','hsl(205 60% 50%)','hsl(30 6% 55%)'];
+const H=[[44,112],[90,112],[136,112],[182,112],[320,112],[366,112],[412,112],[458,112],[205,204],[295,204]];
+const BS=[[70,300],[100,300],[128,300],[156,300],[344,300],[372,300],[400,300],[428,300],[200,312],[320,312]];
+const KBS=[];
+function KB(el){
+let s='<svg class="kbs" viewBox="0 0 570 340"><ellipse class="pm" cx="130" cy="322" rx="84" ry="36"/><ellipse class="pm" cx="386" cy="322" rx="84" ry="36"/>',M={},G={},act=-1;
+ROWS.forEach((r,y)=>[...r].forEach((c,x)=>{const f=FC[x],px=OF[y]+x*46,py=y*46;M[c]={x:px+20,y:py+20,f};s+='<g data-k="'+c+'" style="--z:'+Z[ZN[f]]+'"><rect x="'+px+'" y="'+py+'" width="40" height="40" rx="8"/><text x="'+(px+20)+'" y="'+(py+26)+'">'+c.toUpperCase()+'</text><text class="s2" x="'+(px+33)+'" y="'+(py+13)+'"></text></g>'}));
+M[' ']={x:250,y:204,f:9};s+='<g data-k=" " style="--z:'+Z[4]+'"><rect x="110" y="184" width="280" height="40" rx="8"/><text x="250" y="209">SPACE</text></g>';
+H.forEach((h,i)=>{s+='<line class="fg" x1="'+BS[i][0]+'" y1="'+BS[i][1]+'" x2="'+h[0]+'" y2="'+h[1]+'"'+(i>7?' style="stroke-width:20"':'')+'/>'});
+H.forEach(h=>{s+='<circle class="tp" r="11" cx="'+h[0]+'" cy="'+h[1]+'"/>'});
+el.innerHTML=s+'</svg>';
+$$('g',el).forEach(g=>G[g.dataset.k]=g);
+const ln=$$('.fg',el),cr=$$('.tp',el),F=H.map(h=>({x:h[0],y:h[1],tx:h[0],ty:h[1]}));
+const o={
+lab(m){$$('g[data-k]',el).forEach(g=>{const k=g.dataset.k;if(k==' ')return;const t=$('text',g),u=$('.s2',g),f=x=>/^\p{M}/u.test(x)?'\u25CC'+x:x;let s=f(m&&m[k]?m[k]:k.toUpperCase()),h=m&&m[sk(k)]&&m[sk(k)]!=m[k]?f(m[sk(k)]):'';if(t.textContent!=s)t.textContent=s;if(u.textContent!=h)u.textContent=h})},
+aim(c){F.forEach((f,i)=>{f.tx=H[i][0];f.ty=H[i][1]});const m=M[c];act=m?m.f:-1;if(m){F[m.f].tx=m.x;F[m.f].ty=m.y}cr.forEach((e,i)=>e.classList.toggle('on',i==act));for(const k in G)G[k].classList.toggle('hl',k==c&&!!m)},
+mark(t){for(const k in G)G[k].classList.toggle('mk',!!t&&t.includes(k))},
+flash(c,ok){const g=G[c];if(!g)return;g.classList.add(ok?'ok':'bad');setTimeout(()=>g.classList.remove('ok','bad'),170)},
+step(){if(!el.offsetParent)return;F.forEach((f,i)=>{const dx=f.tx-f.x,dy=f.ty-f.y;if(Math.abs(dx)+Math.abs(dy)>.1){f.x+=dx*.2;f.y+=dy*.2;ln[i].setAttribute('x2',f.x);ln[i].setAttribute('y2',f.y);cr[i].setAttribute('cx',f.x);cr[i].setAttribute('cy',f.y)}})}};
+KBS.push(o);return o}
+(function t(){KBS.forEach(k=>k.step());requestAnimationFrame(t)})();
+/* demo (hands play by themselves) */
+let dm=0,dOn=1;
+function stopDemo(){clearInterval(dm)}
+function demo(kb,seq,gap){stopDemo();if(!dOn||!seq.length)return;let i=0;const run=()=>{const c=seq[i++%seq.length];kb.aim(c);setTimeout(()=>kb.flash(c,1),420)};run();dm=setInterval(run,gap)}
+/* basics */
+const ST=[
+['বসার ভঙ্গি','পিঠ সোজা, কনুই প্রায় ৯০°, কব্জি কিবোর্ডের সমান্তরালে। ফোন বা ট্যাবলেট চোখের সমান উচ্চতায় স্ট্যান্ডে রাখুন; কিবোর্ডে না তাকিয়ে পর্দা দেখুন। পর্দায় হাত যেভাবে নড়ছে, আপনার হাতও সেভাবে চলবে।',''],
+['হোম রো — আঙুলের ঘাঁটি','বাঁ হাতের চার আঙুল A S D F-এ, ডান হাতের চার আঙুল J K L ;-এ। দুই বুড়ো আঙুল স্পেসে। প্রতিটি কি চেপে আঙুল আবার এখানে ফিরে আসে।','asdfjkl;'],
+['F ও J — দিশারি কি','এই দুই কি-তে ছোট উঁচু দাগ থাকে। দুই তর্জনী সেই দাগ ছুঁয়ে না তাকিয়েই হোম রো খুঁজে নেয়।','fj'],
+['উপরের সারি','আঙুল সামান্য উঠে Q W E R T Y U I O P চাপে, তারপর হোম রো-তে ফেরে। প্রতিটি আঙুল নিজের কলামের কি-ই চাপবে।','qwertyuiop'],
+['নিচের সারি','আঙুল সামান্য গুটিয়ে Z X C V B N M , . / চাপুন এবং আবার হোম রো-তে ফিরুন।','zxcvbnm,./'],
+['সংখ্যার সারি','সবার উপরের সারি। হাত না সরিয়ে আঙুল বাড়িয়ে ১ থেকে ০ চাপুন।','1234567890'],
+['স্পেস বার','শব্দের মাঝে যেকোনো একটি বুড়ো আঙুলে স্পেস দিন। অন্য বুড়ো আঙুল বিশ্রামে থাকে।',' '],
+['বাংলা টাইপ','ami লিখলে আমি হয়। a, m, i কোন আঙুলে যায় দেখুন। সব বর্ণের তালিকা “বাংলা” অংশে আছে।','ami']];
+const KB1=KB($('#bk')),KH=KB($('#kh'));let st=0;
+const pl=()=>{$('#play').innerHTML=dOn?'<svg class="i"><use href="#i-stop"/></svg> থামান':'<svg class="i"><use href="#i-play"/></svg> চালান'};
+function step(n){st=(n+ST.length)%ST.length;const s=ST[st];$('#stT').textContent=(st+1)+'. '+s[0];$('#stD').textContent=s[1];$$('#dots button').forEach((d,i)=>d.classList.toggle('on',i==st));KB1.mark(s[2]);if(dOn)demo(KB1,[...(s[2]||'asdfjkl;')],700);else{stopDemo();KB1.aim('')}pl()}
+$('#dots').innerHTML=ST.map((_,i)=>'<button>'+(i+1)+'</button>').join('');
+$$('#dots button').forEach((d,i)=>d.onclick=()=>step(i));
+$('#pv').onclick=()=>step(st-1);$('#nx').onclick=()=>step(st+1);
+$('#play').onclick=()=>{dOn=!dOn;step(st)};
+/* bangla phonetic */
+const CS='kkh ক্ষ|gg জ্ঞ|chh ছ|Ng ঙ|kh খ|gh ঘ|ch চ|Ch ছ|jh ঝ|Th ঠ|Dh ঢ|th থ|dh ধ|ph ফ|bh ভ|sh শ|Rh ঢ়|k ক|g গ|c চ|j জ|T ট|D ড|N ণ|t ত|d দ|n ন|p প|b ব|m ম|z য|r র|l ল|S ষ|s স|h হ|R ড়|y য়';
+const VS='rri ঋ ৃ|OI ঐ ৈ|OU ঔ ৌ|a আ া|A আ া|i ই ি|I ঈ ী|u উ ু|U ঊ ূ|e এ ে|O ও ো|o অ';
+const SS='ng ং|: ঃ|^ ঁ|. ।';
+const T0=[];CS.split('|').forEach(x=>{const[k,v]=x.split(' ');T0.push([k,'c',v])});VS.split('|').forEach(x=>{const[k,v,w]=x.split(' ');T0.push([k,'v',v,w||''])});SS.split('|').forEach(x=>{const[k,v]=x.split(' ');T0.push([k,'s',v])});
+const T=[...T0].sort((a,b)=>b[0].length-a[0].length);
+function bn(s){let o='',pc=0,i=0;while(i<s.length){const e=T.find(t=>s.startsWith(t[0],i));if(!e){o+=s[i++];pc=0;continue}i+=e[0].length;if(e[1]=='c'){if(pc)o+='্';o+=e[2];pc=1}else if(e[1]=='v'){o+=pc?e[3]:e[2];pc=0}else{o+=e[2];pc=0}}return o}
+$('#bch').innerHTML=T0.filter(e=>!['A','chh'].includes(e[0])).map(e=>'<span><b>'+e[2]+'</b> '+e[0]+'</span>').join('');
+/* lessons */
+const mk=(L,a)=>a.map(([t,...i])=>({t,L,i}));
+const EN=mk('en',[['১ হোম রো','asdf jkl;','fall dad ask','lad has a flask','sad lads fall as dad asks'],['২ উপরের সারি','qwer uiop','we write your poetry','pretty power quote','you type quite properly'],['৩ নিচের সারি','zxcv bnm','zoom van mix','a brave zebra moves','can men vex a bold cab'],['৪ সংখ্যা','12345 67890','call 0171 234 5678','7 days 24 hours 365 days'],['৫ শব্দ','bangladesh is a beautiful country','typing practice makes me fast','keep going every day'],['৬ বাক্য','The quick brown fox jumps over the lazy dog.','Practice a little every day and you will improve.','I love to type with all ten fingers.']]);
+const BN=mk('bn',[['১ সহজ শব্দ','ma baba bhai','ami tumi boi','kolom khata gaCh'],['২ প্রকৃতি','phul pakhi nodI','Akash AlO bon','jol gaCh pakhi'],['৩ যুক্তবর্ণ','bondhu sundor','shikkhok chhatro','bangla bhaSa'],['৪ বাক্য','ami bangla bhalObasi.','amar desh bangladesh.','sOniya amar bondhu.','Aj Akash sundor.']]);
+const TS=[{t:'English',L:'en',i:['Practice makes a man perfect so type a little every day.','Learning to type fast is a useful skill for study and work.','Bangladesh is a beautiful country with green fields and rivers.']},{t:'বাংলা',L:'bn',i:['amar sOnar bangla ami tOmay bhalObasi.','ami protidin TAip kori.','Aj Akash sundor.']}];
+/* storage, settings, stats, fonts */
+const LS={g(k,d){try{const v=localStorage.getItem('otg.'+k);return v?JSON.parse(v):d}catch(e){return d}},s(k,v){try{localStorage.setItem('otg.'+k,JSON.stringify(v));return 1}catch(e){return 0}}};
+const CF=Object.assign({fb:'Hind Siliguri',fe:'Hind Siliguri',sz:1,th:'auto',fs:1,goal:10,snd:0,st:0,kb:1,hn:1,lb:1,an:0,ah:1,enc:'uni'},LS.g('cfg',{})),SX=LS.g('sx',[]),WK=LS.g('wk',{});
+if(CF.fb=='SutonnyMJ'){CF.fb='Hind Siliguri';CF.enc='ansi'}
+const day=t=>{const d=new Date(t);return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()},MN={en:'English',bn:'বাংলা',test:'টেস্ট',pr:'প্র্যাকটিস',lang:'ভাষা'};
+/* SutonnyMJ (Bijoy ANSI) display converter, best effort */
+const BJ={};'অA আAv ইB ঈC উD ঊE ঋF এG ঐH ওI ঔJ কK খL গM ঘN ঙO চP ছQ জR ঝS ঞT টU ঠV ডW ঢX ণY তZ থ_ দ` ধa নb পc ফd বe ভf মg যh রi লj শk ষl সm হn ৎr ংs ঃt ঁu াv ীx ুy ূz ৃ„ ।|'.split(' ').forEach(p=>BJ[p[0]]=p.slice(1));BJ['\u09DC']='o';BJ['\u09DD']='p';BJ['\u09DF']='q';
+function bj(s){const C=/[\u0995-\u09B9\u09CE\u09DC\u09DD\u09DF]/,K='\u09BE\u09BF\u09C0\u09C1\u09C2\u09C3\u09C7\u09C8\u09CB\u09CC',a=[...s.replace(/\u09A1\u09BC/g,'\u09DC').replace(/\u09A2\u09BC/g,'\u09DD').replace(/\u09AF\u09BC/g,'\u09DF').replace(/[\u09E6-\u09EF]/g,d=>d.charCodeAt(0)-2534)];let o='',i=0;
+while(i<a.length){const c=a[i];if(!C.test(c)){o+=BJ[c]||c;i++;continue}
+let j=i,rf=0,b,pre='',post='';if(c=='\u09B0'&&a[i+1]=='\u09CD'&&C.test(a[i+2]||'')){rf=1;j=i+2}
+if(a[j]=='\u0995'&&a[j+1]=='\u09CD'&&a[j+2]=='\u09B7'){b='ÿ';j+=3}else b=BJ[a[j++]];
+while(a[j]=='\u09CD'&&C.test(a[j+1]||'')){const n=a[j+1];b+=n=='\u09AF'?'¨':n=='\u09B0'?'ª':'&'+BJ[n];j+=2}
+for(;K.includes(a[j]||'#');j++){const k=a[j];if(k=='\u09BF')pre+='w';else if(k=='\u09C7')pre+='†';else if(k=='\u09C8')pre+='‰';else if(k=='\u09CB'){pre+='†';post+='v'}else if(k=='\u09CC'){pre+='†';post+='Š'}else post+=BJ[k]}
+o+=pre+b+(rf?'©':'')+post;i=j}return o}
+/* Unicode is the default. Bijoy ANSI (SutonnyMJ) is shown only when that font is really present, so no gibberish */
+let SM=0;const ANSI=()=>CF.enc=='ansi'&&SM;
+function ap(){const r=document.documentElement,s=r.style,an=ANSI();s.setProperty('--fb',an?"'SutonnyMJ',sans-serif":"'"+CF.fb+"','Hind Siliguri','Noto Sans Bengali','Noto Serif Bengali','Nirmala UI','Kalpurush','SolaimanLipi','Siyam Rupali','Vrinda','Lohit Bengali',sans-serif");s.setProperty('--fe',"'"+CF.fe+"','Hind Siliguri',system-ui,sans-serif");s.setProperty('--fs',CF.sz);if(CF.th=='auto')r.removeAttribute('data-theme');else r.dataset.theme=CF.th;const t='আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।',p=$('#spv');if(p)p.textContent=an?bj(t):t;document.body.classList.toggle('nokb',!CF.kb);document.body.classList.toggle('nohn',!CF.hn)}
+function rec(m,w,a,s,c){if(m=='pr'&&CT.pj){const p=PJ.find(x=>x.id==CT.pj);if(p){p.best=Math.max(p.best||0,w);p.runs=(p.runs||0)+1;LS.s('pj',PJ)}}SX.push({d:Date.now(),m,w,a,s:Math.round(s),c});if(SX.length>600)SX.shift();LS.s('sx',SX);LS.s('wk',WK)}
+const tdm=()=>{const k=day(Date.now());return SX.filter(x=>day(x.d)==k).reduce((a,x)=>a+x.s,0)/60};
+function streak(){const s=new Set(SX.map(x=>day(x.d)));let c=0,t=Date.now();if(!s.has(day(t)))t-=864e5;while(s.has(day(t))){c++;t-=864e5}return c}
+function rhg(){const m=tdm();$('#hg').innerHTML='<b>আজকের লক্ষ্য</b> — '+m.toFixed(1)+' / '+CF.goal+' মিনিট <span style="float:right;color:var(--ac)">ধারাবাহিক '+streak()+' দিন</span><div class="pb" style="margin-top:8px"><i style="width:'+Math.min(100,100*m/CF.goal)+'%"></i></div>'}
+function rsx(){const n=SX.length,l=SX.slice(-10),av=k=>l.length?Math.round(l.reduce((a,x)=>a+x[k],0)/l.length):0,days=[];
+for(let i=13;i>=0;i--){const t=Date.now()-i*864e5,k=day(t);days.push([new Date(t).getDate(),SX.filter(x=>day(x.d)==k).reduce((a,x)=>a+x.s,0)/60])}
+const mx=Math.max(1,...days.map(d=>d[1])),wk=Object.entries(WK).sort((a,b)=>b[1]-a[1]).slice(0,10),f=d=>new Date(d).toLocaleString('bn-BD',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
+$('#sx').innerHTML='<h2>পরিসংখ্যান</h2><div class="kp">'+[[n,'সেশন'],[Math.round(SX.reduce((a,x)=>a+x.s,0)/60)+' মি','মোট সময়'],[Math.max(0,...SX.map(x=>x.w)),'সেরা WPM'],[av('w'),'গড় WPM (শেষ ১০)'],[av('a')+'%','গড় নির্ভুলতা'],[streak(),'দিনের ধারা']].map(x=>'<div><b>'+x[0]+'</b>'+x[1]+'</div>').join('')+'</div>'
++'<div class="card"><b>গত ১৪ দিন (মিনিট)</b><div class="bars" style="margin-top:8px">'+days.map(d=>'<i title="'+d[1].toFixed(1)+'" style="height:'+Math.max(3,d[1]/mx*100)+'%"></i>').join('')+'</div><div class="bl">'+days.map(d=>'<span>'+d[0]+'</span>').join('')+'</div></div>'
++'<div class="card"><b>দুর্বল কি</b><div class="chips" style="margin-top:6px">'+(wk.length?wk.map(x=>'<span><b>'+x[0].toUpperCase()+'</b> '+x[1]+'</span>').join(''):'<span>এখনো তথ্য নেই</span>')+'</div></div>'
++'<div class="card"><b>সাম্প্রতিক সেশন</b><ul>'+(SX.slice(-8).reverse().map(x=>'<li>'+f(x.d)+' · '+MN[x.m]+' · <b style="color:var(--ink)">'+x.w+' WPM</b> · '+x.a+'%</li>').join('')||'<li>এখনো কোনো সেশন নেই</li>')+'</ul></div>'
++'<div class="row"><button id="ex">ডেটা এক্সপোর্ট</button><button id="rs">সব মুছুন</button></div>';
+$('#ex').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({sessions:SX,weakKeys:WK},null,1)],{type:'application/json'}));a.download='typing-stats.json';a.click()};
+$('#rs').onclick=()=>{if(confirm('সব পরিসংখ্যান মুছে ফেলবেন?')){SX.length=0;for(const k in WK)delete WK[k];LS.s('sx',SX);LS.s('wk',WK);rsx()}}}
+/* practice content */
+const WE='the and you that for are with this have from they will would there their what about which when make like time just know people into year your good some could them see other than then now look only come its over think also back after use two how our work first well way even new want because any these give day most'.split(' ');
+const WB='ma baba bhai bOn ami tumi boi kolom khata phul pakhi nodI Akash jol gaCh bondhu sundor desh bhaSa baRi gram shohor maCh bhat Dim pani chA kaj khela gan golpo sokal rat din mathA hat chOkh kan nak mukh ghor shikkhok chhatro bidzAloy bhalo kharap boR ChOT notun'.split(' ');
+const gw=(p,n=7,l=8)=>Array.from({length:l},()=>Array.from({length:n},()=>p[Math.random()*p.length|0]).join(' '));
+const CT=LS.g('ct',{t:'',L:'en'}),ck=t=>{const a=t.split(/(?<=[.!?।\n])\s*/).map(x=>x.trim()).filter(Boolean);return a.length?a:['Type your own text here.']};
+const PR=[{t:'English শব্দ',L:'en',gen:()=>gw(WE),i:gw(WE)},{t:'বাংলা শব্দ',L:'bn',gen:()=>gw(WB,5),i:gw(WB,5)},
+{t:'স্মার্ট: দুর্বল কি',L:'en',i:[],gen:()=>{const w=Object.entries(WK).sort((a,b)=>b[1]-a[1]).slice(0,5).map(x=>x[0]),p=WE.filter(x=>w.some(k=>x.includes(k)));return gw(p.length>4?p:WE)}},
+{t:'সংখ্যা',L:'en',gen:()=>gw(['1234','5678','9012','3456','7890','2468'],5,6),i:gw(['1234','5678','9012'],5,6)},{t:'নিজের লেখা',L:CT.L,lp:1,i:ck(CT.t)}];
+/* ===== input methods, projects ===== */
+const SKS='1!2@3#4$5%6^7&8*9(0)-_=+[{]};:\'",<.>/?`~',SKY={};for(let i=0;i<SKS.length;i+=2)SKY[SKS[i]]=SKS[i+1];
+const sk=k=>/[a-z]/.test(k)?k.toUpperCase():SKY[k]||k,CD={Semicolon:';',Comma:',',Period:'.',Slash:'/',Quote:"'",Minus:'-',Equal:'=',BracketLeft:'[',BracketRight:']',Backquote:'`',Backslash:'\\'};
+const KRW=["qwertyuiop[]","asdfghjkl;'","zxcvbnm,./"],SKU={};for(const u in SKY)SKU[SKY[u]]=u;
+const bk=c=>/[A-Z]/.test(c)?c.toLowerCase():SKU[c]||c,kn=c=>c==' '?'Space':/[A-Z]/.test(c)?'Shift + '+c.toLowerCase():SKU[c]?'Shift + '+SKU[c]:c.toUpperCase();
+function pL(t){const M={};t.split('\n').forEach(l=>{const a=l.trim().split(/\s+/);if(a.length<2)return;M[a[0]]=a[1];if(a[2])M[sk(a[0])]=a[2]});return{M,N:Object.keys(M)}}
+function lay(Rw,dg='',ex=''){const o=[];Rw.forEach((r,j)=>{const[n,s]=typeof r=='string'?[r,'']:r,a=n.split(' '),b=s?s.split(' '):[];[...KRW[j]].forEach((k,i)=>{if(!a[i]||a[i]=='_')return;const u=b[i]&&b[i]!='_'?b[i]:a[i].toUpperCase();o.push(k+' '+a[i]+(u!=a[i]?' '+u:''))})});[...dg].forEach((d,i)=>o.push('1234567890'[i]+' '+d));if(ex)o.push(ex);return o.join('\n')}
+const CC='\u0995-\u09B9\u09DC\u09DD\u09DF\u09CE',BRE=new RegExp('(['+CC+'](?:\u09CD['+CC+'])*)([\u09BF\u09C7\u09C8\u09CB\u09CC])','g'),IV={'আ':'\u09BE','ই':'\u09BF','ঈ':'\u09C0','উ':'\u09C1','ঊ':'\u09C2','এ':'\u09C7','ঐ':'\u09C8'};
+const BJP=(s,Rv)=>s.replace(/\u09A1\u09BC/g,'\u09DC').replace(/\u09A2\u09BC/g,'\u09DD').replace(/\u09AF\u09BC/g,'\u09DF').replace(BRE,(m,c,k)=>k=='\u09CB'?'\u09C7'+c+'\u09BE':k=='\u09CC'?'\u09C7'+c+'\u09D7':k+c).replace(/[আইঈউঊএঐ]/g,(x,i,t)=>Rv[x]?x:x=='আ'&&Rv['অ']?'অ\u09BE':(i>0&&/[\u0980-\u09FF]/.test(t[i-1])&&Rv['অ']?'অ':'')+IV[x]+((i==0||!/[\u0980-\u09FF]/.test(t[i-1]))&&'\u09BF\u09C7\u09C8'.includes(IV[x])&&Rv['অ']?'অ':''));
+/* Bijoy: ি ে ৈ আগে টাইপ, পরে ব্যঞ্জন; ে+া=ো, ে+ৗ=ৌ; শব্দের শুরুর কার = স্বরবর্ণ */
+const BU=M=>{const CR=/[\u0995-\u09B9\u09DC\u09DD\u09DF\u09CE]/,PK='\u09BF\u09C7\u09C8',IN={'\u09BE':'আ','\u09BF':'ই','\u09C0':'ঈ','\u09C1':'উ','\u09C2':'ঊ','\u09C7':'এ','\u09C8':'ঐ'},ind=p=>[...p].map(x=>IN[x]||x).join('');
+return raw=>{let o='',cl='',pd='',la=0;const F=()=>{o+=cl+(cl?pd:'');if(cl)pd='';cl=''};
+for(const c of raw){const s=M[c]??c,f=s[0];
+if(s.length==1&&PK.includes(s)){if(!cl&&!pd&&la&&la==o.length){o=o.slice(0,-1)+ind(s);la=0}else{if(cl)F();if(pd)o+=ind(pd);pd=s}}
+else if(CR.test(f)){if(cl&&!cl.endsWith('\u09CD'))F();cl+=s}
+else if(f=='\u09CD'){if(cl)cl+=s;else o+=s}
+else if(s.length==1&&'\u09BE\u09C0\u09C1\u09C2\u09C3\u09D7'.includes(s)){if(cl){const k=pd=='\u09C7'?(s=='\u09BE'?'\u09CB':s=='\u09D7'?'\u09CC':null):null;if(k||!pd)o+=cl+(k||s);else o+=cl+pd+(s=='\u09C3'?'ঋ':s=='\u09D7'?'ঔ':IN[s]||s);cl=pd=''}else{if(pd){o+=ind(pd);pd=''}if(la&&la==o.length&&s!='\u09BE'&&s!='\u09D7'){o=o.slice(0,-1)+(s=='\u09C3'?'ঋ':IN[s]||s);la=0}else if(s=='\u09BE'&&o.endsWith('অ'))o=o.slice(0,-1)+'আ';else if(s=='\u09D7'&&o.endsWith('ও'))o=o.slice(0,-1)+'ঔ';else o+=s=='\u09C3'?'ঋ':s=='\u09D7'?'ঔ':IN[s]||s}}
+else{if(s=='\u0985'&&pd&&!cl){o+=ind(pd);pd='';continue}F();if(pd){o+=ind(pd);pd=''}o+=s;la=s=='\u0985'&&o.length>1&&/[\u0980-\u09FF]/.test(o[o.length-2])?o.length:0}}
+F();if(pd)o+=ind(pd);return o}};
+function mkIM(id,n,tx,o={}){const{M}=pL(tx),Rv={},isN=k=>/[a-z0-9]/.test(k)||k in SKY,ks=Object.keys(M);[...ks.filter(isN),...ks.filter(k=>!isN(k))].forEach(k=>{if(!(M[k] in Rv))Rv[M[k]]=k});
+const TK=Object.keys(Rv).sort((a,b)=>b.length-a.length),en=s=>{let r='',i=0;while(i<s.length){const x=TK.find(y=>s.startsWith(y,i));if(x){r+=Rv[x];i+=x.length}else r+=s[i++]}return r};
+return{id,n,t:'map',M,map:M,tx,rtl:o.rtl,f:o.f||'bn',conv:o.bj?BU(M):raw=>[...raw].map(c=>M[c]??c).join(''),enc:o.bj?s=>en(BJP(s,Rv)):en}}
+const IM={en:{id:'en',n:'English (QWERTY)',t:'id'},bn:{id:'bn',n:'বাংলা ফোনেটিক',t:'ph',conv:bn,f:'bn'}},IMX=id=>IM[id]||IM.en,addm=(id,n,tx,o)=>IM[id]=mkIM(id,n,tx,o);
+addm('bj','বাংলা বিজয় (Bijoy)',lay([['ঙ য ড প ট চ জ হ গ \u09DC \u09D7 _','ং \u09DF ঢ ফ ঠ ছ ঝ ঞ ঘ \u09DD _ _'],['ৃ ু ি া ্ ব ক ত দ _ _','ঋ ূ ী অ । ভ খ থ ধ _ _'],['্য ও ে র ন স ম _ _ _','্র ঔ ৈ ল ণ ষ শ _ _ _']],'১২৩৪৫৬৭৮৯০',"` \u09CE\n4 ৪ ৳\n7 ৭ \u0981\n- - ঃ"),{bj:1,f:'bn'});
+if(!IM[CT.L]){CT.L='en';PR[4].L='en'}
+const BJL=mk('bj',[['১ হোম রো','বাবা কাকা','বাবা দাদা কাকা','ভাত থাক খাদ'],['২ কার (ি ী ু ূ ৃ)','কিতাব দিদি','কুকুর সুতা','মূল দূর','কী দিন','তৃষা বৃদ্ধি'],['৩ কার (ে ৈ ো ৌ)','কেক বেত','বই তৈরি','কোথা সোনা','কৌশল দৌড়'],['৪ যুক্তবর্ণ ও ফলা','বন্ধু সুন্দর','শিক্ষক বিদ্যালয়','প্রথম ক্রম','সত্য মিথ্যা','রাষ্ট্র স্বাধীন'],['৫ ড় য় ং ঃ ঁ ৎ','বড় মেয়ে','বাংলা চাঁদ','দুঃখ উৎসব','৪৫ টাকা ৳৫০০'],['৬ স্বরবর্ণ','আমি আজ','এই ওই ঐ','ঈশ্বর উপর ঊষা','ঋষি ঔষধ'],['৭ বাক্য','আমি বাংলায় গান গাই।','আমার সোনার বাংলা।','সে বই পড়ে।','ফুলের সুবাস মধুর।']]);
+const PJ=LS.g('pj',[]),LD=[],nid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dl=(n,o)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,1)],{type:'application/json'}));a.download=n;a.click()};
+let AC;function snd(ok){if(!CF.snd)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=ok?880:180;o.type=ok?'sine':'square';g.gain.value=.05;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+(ok?.03:.12))}catch(e){}}
+$('#cl').innerHTML=Object.values(IM).map(m=>'<option value="'+m.id+'">'+m.n+'</option>').join('');
+/* Bijoy section */
+function ens(){$$('#enb button').forEach(b=>b.classList.toggle('on',b.dataset.e==CF.enc));$('#sen').value=CF.enc;
+$('#enm').textContent=CF.enc=='ansi'?(SM?'Bijoy ANSI (SutonnyMJ) দেখানো হচ্ছে।':'SutonnyMJ ফন্ট এই ডিভাইসে নেই, তাই Unicode বাংলা দেখানো হচ্ছে। সেটিংসে ফন্ট ফাইল (.ttf) যোগ করুন।'):'Unicode বাংলা — সব ডিভাইসে পড়া যায়।'}
+function rlg(){LD.length=0;LD.push(...BJL);ens();E.lang.pick(0)}
+$('#enb').onclick=e=>{const b=e.target.closest('button');if(b){CF.enc=b.dataset.e;LS.s('cfg',CF);ens();rf()}};
+/* projects */
+let epj=null;const svp=()=>{LS.s('pj',PJ);rpj()};
+function rpj(){const v=$('#pm').value;$('#pm').innerHTML=Object.values(IM).map(m=>'<option value="'+m.id+'">'+esc(m.n)+'</option>').join('');$('#pm').value=v||CT.L||'en';
+$('#pl').innerHTML=PJ.length?PJ.slice().reverse().map(p=>'<div class="card pji"><b>'+esc(p.n)+'</b><span>'+esc(IM[p.L]?IM[p.L].n:p.L)+' · '+ck(p.t).length+' লাইন'+(p.runs?' · সেরা '+p.best+' WPM · '+p.runs+' বার':'')+'</span><div class="row">'+[['o','খুলুন'],['e','এডিট'],['c','কপি'],['x','এক্সপোর্ট'],['d','মুছুন']].map(a=>'<button data-a="'+a[0]+'" data-i="'+p.id+'">'+a[1]+'</button>').join('')+'</div></div>').join(''):'<p>এখনো কোনো প্রজেক্ট নেই।</p>'}
+$('#pl').onclick=e=>{const b=e.target.closest('button');if(!b)return;const p=PJ.find(x=>x.id==b.dataset.i);if(!p)return;const a=b.dataset.a;
+if(a=='o'){CT.t=p.t;CT.L=p.L;CT.pj=p.id;LS.s('ct',CT);$('#ct').value=p.t;$('#cl').value=p.L;Object.assign(PR[4],{L:p.L,i:ck(p.t)});go('pr');E.pr.pick(4)}
+else if(a=='e'){epj=p.id;$('#pn1').value=p.n;$('#pt1').value=p.t;$('#pm').value=p.L;$('#pjm').textContent='এডিট চলছে'}
+else if(a=='c'){PJ.push({...p,id:nid(),n:p.n+' (কপি)',best:0,runs:0,at:Date.now()});svp()}
+else if(a=='x')dl('project-'+p.n+'.json',{otgProject:p});
+else if(a=='d'&&confirm('"'+p.n+'" মুছবেন?')){PJ.splice(PJ.indexOf(p),1);svp()}};
+$('#psv').onclick=()=>{const n=$('#pn1').value.trim(),t=$('#pt1').value.trim();if(!n||!t){$('#pjm').textContent='নাম ও লেখা দিন';return}
+const p=PJ.find(x=>x.id==epj),L=$('#pm').value;if(p)Object.assign(p,{n,t,L,at:Date.now()});else PJ.push({id:nid(),n,t,L,at:Date.now(),best:0,runs:0});epj=null;$('#pn1').value=$('#pt1').value='';LS.s('pjd',null);svp();$('#pjm').textContent='প্রজেক্ট সংরক্ষিত'};
+$('#pnw').onclick=()=>{epj=null;$('#pn1').value=$('#pt1').value='';LS.s('pjd',null);$('#pjm').textContent=''};
+['pn1','pt1'].forEach(i=>$('#'+i).oninput=()=>LS.s('pjd',{n:$('#pn1').value,t:$('#pt1').value}));
+{const d=LS.g('pjd',null);if(d){$('#pn1').value=d.n||'';$('#pt1').value=d.t||''}}
+$('#cs').onclick=()=>{const t=$('#ct').value.trim();if(!t)return;const n=prompt('প্রজেক্টের নাম');if(!n)return;PJ.push({id:nid(),n,t,L:$('#cl').value,at:Date.now(),best:0,runs:0});LS.s('pj',PJ);$('#cs').textContent='সংরক্ষিত ✓'};
+$('#bk1').onclick=()=>{const d={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith('otg.'))d[k]=localStorage.getItem(k)}dl('otg-backup-'+new Date().toISOString().slice(0,10)+'.json',{otgBackup:1,data:d})};
+$('#pi').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(o.otgProject){PJ.push({...o.otgProject,id:nid()});svp();$('#pjm').textContent='প্রজেক্ট ইমপোর্ট হয়েছে'}else if(o.otgBackup&&confirm('বর্তমান সব ডেটা ব্যাকআপ দিয়ে বদলাবেন?')){Object.entries(o.data).forEach(([k,v])=>k.startsWith('otg.')&&localStorage.setItem(k,v));location.reload()}else $('#pjm').textContent='ফাইলটি চেনা গেল না'}catch(x){$('#pjm').textContent='ফাইল পড়া যায়নি'}};r.readAsText(f);e.target.value=''};
+$('#rall').onclick=()=>{if(confirm('সব ডেটা (সেটিংস, পরিসংখ্যান, প্রজেক্ট) মুছে রিসেট করবেন?')){Object.keys(localStorage).filter(k=>k.startsWith('otg.')).forEach(k=>localStorage.removeItem(k));location.reload()}};
+/* practice engine (physical keyboard only) */
+const seg=window.Intl&&Intl.Segmenter?new Intl.Segmenter('bn',{granularity:'grapheme'}):null;
+const cl=s=>seg?[...seg.segment(s)].map(x=>x.segment):[...s];
+function ch(e){const k=e.key;if(k&&k.length==1&&k.charCodeAt(0)<128)return k;const c=e.code||'';if(c=='Space')return' ';const b=/^Key[A-Z]$/.test(c)?c[3].toLowerCase():/^Digit\d$/.test(c)?c[5]:CD[c];return b?(e.shiftKey?sk(b):b):''}
+function mount(root,D,nm){
+root.innerHTML='<div><div class="tabs"></div><div class="tgt"></div><div class="pb"><i></i></div><div class="lt"></div><div class="hint"></div><div class="stats"><div><b class="w">0</b>WPM</div><div><b class="a">100%</b>নির্ভুলতা</div><div><b class="t">0s</b>সময়</div><div><b class="p"></b>ধাপ</div></div><div class="msg"></div><div class="row"><button data-a="p"><svg class="i"><use href="#i-prev"/></svg></button><button data-a="r"><svg class="i"><use href="#i-redo"/></svg> আবার (Esc)</button><button class="pr" data-a="n">পরের (Tab) <svg class="i"><use href="#i-next"/></svg></button></div></div><div class="kbw"></div>';
+const q=s=>$(s,root),kbd=KB(q('.kbw'));
+let lv=0,ix=0,t0=0,kc=0,er=0,bd=0,done=0,ph=0,tg='',lt='',raw='',out='',tm=0,caps=0,im=IM.en;
+const cpl=()=>{let i=0;while(i<raw.length&&raw[i]==lt[i])i++;return i};
+function stats(){const s=t0?(Date.now()-t0)/1000:0;q('.w').textContent=s>.5?Math.round([...out].length/5/(s/60)):0;q('.a').textContent=(kc?Math.max(0,Math.round(100*(1-er/kc))):100)+'%';q('.t').textContent=Math.round(s)+'s'}
+function paint(){const sj=ph&&im.f=='bn'&&ANSI(),a=[...(ph&&bd?im.conv(raw.slice(0,cpl())):out)];let s=0,h='';cl(tg).forEach(c=>{const n=[...c].length,p=a.slice(s,s+n);let k='';if(p.length==n)k=p.join('')==c?'ok':(bd?'bad':'cur');else if(p.length)k=!bd||c.startsWith(p.join(''))?'cur':'bad';else if(s==a.length)k='cur';if(ph&&bd&&k=='cur')k='bad';h+='<span class="'+k+'">'+esc(sj?bj(c):c)+'</span>';s+=n});const g=q('.tgt');g.className='tgt'+(ph&&im.f?' '+im.f:'');g.dir=im.rtl?'rtl':'ltr';g.innerHTML=h;q('.pb i').style.width=Math.min(100,100*a.length/Math.max(1,[...tg].length))+'%'}
+function upd(){out=ph?im.conv(raw):raw;const on=lt.startsWith(raw);bd=!on;paint();const nx=on&&!done?lt[raw.length]||'':'';
+q('.hint').textContent=done?'':bd?'ভুল কি চাপা হয়েছে — Backspace চাপুন'+(cpl()<lt.length?' (সঠিক কি: '+kn(lt[cpl()])+')':''):!nx?'':'পরের কি: '+kn(nx);if(!done&&!bd&&nx&&im.map&&im.map[nx]){const mv=im.map[nx];q('.hint').textContent+=' → '+(/^\p{M}/u.test(mv)?'\u25CC'+mv:mv)+(im.id=='bj'&&'িেৈ'.includes(mv)?' (ব্যঞ্জনের আগে চাপুন)':'')}
+q('.lt').innerHTML=ph&&im.id!='bj'?(on?'<u>'+esc(raw)+'</u>'+esc(lt.slice(raw.length)):esc(lt)):'';
+if(caps)q('.hint').textContent='Caps Lock চালু আছে — বন্ধ করুন';kbd.lab(CF.lb&&im.map?im.map:null);kbd.aim(nx?bk(nx):'')}
+function load(){clearInterval(tm);const d=D[lv]||{t:'',L:'en',i:['']};if(d.gen&&!d.i.length)d.i=d.gen();lt=d.i[ix]||'';im=IMX(d.L);ph=im.t!='id';if(im.enc)lt=im.enc(lt);tg=ph?im.conv(lt):lt;t0=kc=er=bd=done=0;raw=out='';
+q('.tabs').innerHTML=D.map((d,i)=>'<button data-l="'+i+'"'+(i==lv?' class="on"':'')+'>'+d.t+'</button>').join('');
+q('.p').textContent=(ix+1)+'/'+d.i.length;q('.msg').textContent='';stats();upd()}
+function finish(){clearInterval(tm);stats();done=1;const s=(Date.now()-t0)/1000,w=+q('.w').textContent,a=parseInt(q('.a').textContent),pbw=Math.max(0,...SX.map(x=>x.w)),nr=w>pbw&&SX.length>0;rec(nm,w,a,s,[...out].length);upd();q('.msg').textContent=(nr?'নতুন রেকর্ড! ':'')+'সম্পন্ন — '+w+' WPM, নির্ভুলতা '+a+'%'+(ix==D[lv].i.length-1?' (লেভেল শেষ)':'')+'। Enter চাপুন';rhg();if(CF.an)setTimeout(()=>{if(done)next()},1300)}
+function next(){if(!D[lv])return;if(++ix>=D[lv].i.length){ix=0;if(D[lv].gen)D[lv].i=D[lv].gen();else if(!D[lv].lp)lv=(lv+1)%D.length}load()}
+function prev(){if(--ix<0){lv=(lv+D.length-1)%D.length;ix=D[lv].i.length-1}load()}
+function key(e){if(e.ctrlKey||e.metaKey||e.altKey)return;const k=e.key;caps=e.getModifierState?e.getModifierState('CapsLock'):0;
+if(k=='Escape'){e.preventDefault();return load()}
+if(k=='Tab'){e.preventDefault();return e.shiftKey?prev():next()}
+if(k=='Enter'){e.preventDefault();if(done)next();return}
+if(done)return;
+if(k=='Backspace'){e.preventDefault();if(raw){raw=raw.slice(0,-1);upd()}return}
+const c=ch(e);if(!c||e.repeat)return;e.preventDefault();
+if(!t0){t0=Date.now();tm=setInterval(stats,400)}
+if(CF.st&&!lt.startsWith(raw+c)){er++;kc++;kbd.flash(bk(c),0);snd(0);stats();return}raw+=c;kc++;const was=bd;upd();if(bd&&!was){er++;const x=(lt[raw.length-1]||'').toLowerCase();if(x.trim())WK[x]=(WK[x]||0)+1}kbd.flash(bk(c),!bd);snd(!bd);stats();if(!bd&&raw==lt)finish()}
+root.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.l!=null){lv=+b.dataset.l;ix=0;if(D[lv].gen)D[lv].i=D[lv].gen();return load()}const a=b.dataset.a;if(a=='r')load();else if(a=='n')next();else if(a=='p')prev()};
+load();return{key,load,upd,pick:i=>{lv=i;ix=0;load()}}}
+if(!LD.length)LD.push(...BJL);
+const E={en:mount($('#enp'),EN,'en'),bn:mount($('#bnp'),BN,'bn'),test:mount($('#tp'),TS,'test'),pr:mount($('#prp'),PR,'pr'),lang:mount($('#lgp'),LD,'lang')};
+
+/* ===== UI auto-hide while typing ===== */
+let ahT=0,ahX=-1,ahY=-1;
+function ahShow(){document.body.classList.remove('typing');clearTimeout(ahT)}
+function ahTyping(){if(!CF.ah)return;document.body.classList.add('typing');clearTimeout(ahT);ahT=setTimeout(ahShow,4000)}
+addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||/^(Shift|Control|Alt|Meta|CapsLock|Escape|Tab|F\d+)$/.test(e.key))return;const t=e.target,tag=t&&t.tagName;if(tag=='SELECT'||(tag=='INPUT'&&t.type!='text'&&t.type!='number'&&t.type!='search')||$('.ov.on'))return;const typing=cur||(t&&(tag=='TEXTAREA'||tag=='INPUT'||t.isContentEditable));if(typing)ahTyping()},true);
+addEventListener('mousemove',e=>{if(Math.abs(e.clientX-ahX)+Math.abs(e.clientY-ahY)>6&&ahX>=0)ahShow();ahX=e.clientX;ahY=e.clientY},{passive:true});
+addEventListener('pointerdown',ahShow,{passive:true});addEventListener('touchstart',ahShow,{passive:true});
+addEventListener('keydown',e=>{if(e.key=='Escape')ahShow()},true);
+
+/* ===== সকল যুক্তাক্ষর (বিজয়) — পাঠ ও চার্ট ===== */
+const JK=[
+['৪.১ ক ও ঙ-যুক্ত','ক্ক ক্ট ক্ত ক্ন ক্ম ক্ষ','ক্ষ্ণ ক্ষ্ম ক্ষ্য ক্স ক্ল ক্ব','ঙ্ক ঙ্খ ঙ্গ ঙ্ঘ ঙ্ক্ষ ঙ্ম','শক্ত রক্ত ভক্ত শিক্ষক','অঙ্ক সঙ্গ বঙ্গ সঙ্ঘ','লক্ষ্য লক্ষ্মী কক্ষ পক্ষ'],
+['৪.২ চ-বর্গ ও ঞ-যুক্ত','চ্চ চ্ছ চ্য জ্জ জ্ঝ জ্ঞ জ্ব','ঞ্চ ঞ্ছ ঞ্জ ঞ্ঝ','বিজ্ঞান জ্ঞান উজ্জ্বল পঞ্চ','ইচ্ছা মিছিল অঞ্জন কাঞ্চন','সুবিজ্ঞ যজ্ঞ সংজ্ঞা'],
+['৪.৩ ট-বর্গ ও ণ-যুক্ত','ট্ট ট্ব ড্ড ড্য ণ্ট ণ্ঠ ণ্ড ণ্ণ ণ্ব ণ্ম','কণ্ঠ ঘণ্টা কণ্টক গণ্ডি','চট্টগ্রাম বৃষ্টি ষ্ট ষ্ঠ ষ্ণ','অষ্ট কষ্ট শ্রেষ্ঠ উষ্ণ','নিষ্ঠুর কৃষ্ণ তৃষ্ণা'],
+['৪.৪ ত-বর্গ যুক্ত','ত্ত ত্থ ত্ন ত্ম ত্ব ত্য ত্র','দ্দ দ্ধ দ্ব দ্ভ দ্ম দ্য দ্র','ন্ত ন্থ ন্দ ন্ধ ন্ন ন্ম ন্য ন্ব','সত্য উত্তর মহত্ত্ব আত্মা','বিদ্যা পদ্ম উদ্ভাবন সদ্ব্যবহার','বন্ধু সন্ধ্যা সুন্দর অন্ন গ্রন্থ','ধ্য ধ্ব ধ্র ধ্ম'],
+['৪.৫ প-বর্গ যুক্ত','প্ত প্ন প্প প্ল প্স প্য প্র','ব্জ ব্দ ব্ধ ব্ব ব্য ব্র ব্ল','ভ্ন ভ্য ভ্র ম্ন ম্প ম্ফ ম্ব ম্ভ ম্ম ম্য ম্র ম্ল','সপ্ত লুপ্ত গুপ্ত ব্যস্ত','জব্দ শব্দ আব্দুল ডাব্বা','সম্পদ সম্ভব সম্মান গম্ভীর','প্রম্ফ ফ্ল ফ্র ভ্র'],
+['৪.৬ অন্তঃস্থ ও ঊষ্ম যুক্ত','ল্ক ল্গ ল্ট ল্ড ল্প ল্ফ ল্ব ল্ম ল্ল ল্য','শ্চ শ্ছ শ্ন শ্ব শ্ম শ্ল শ্য শ্র','ষ্ক ষ্প ষ্ফ ষ্ম ষ্য','স্ক স্খ স্ট স্ত স্থ স্ন স্প স্ফ স্ব স্ম স্ল স্য স্র','হ্ণ হ্ন হ্ব হ্ম হ্ল হ্য হ্র','আল্লাহ বিশ্ব নিশ্চয় আশ্চর্য','স্কুল স্টেশন স্থান স্বাধীন','স্মরণ স্নান স্পষ্ট স্বপ্ন','ব্রাহ্মণ চিহ্ন গৃহ্য'],
+['৪.৭ রেফ (র্) ও র-ফলা, য-ফলা','র্ক র্খ র্গ র্ঘ র্চ র্ছ র্জ র্ট র্ড র্ত র্থ র্দ র্ধ র্ন','র্প র্ফ র্ব র্ভ র্ম র্য র্ল র্শ র্ষ র্স র্হ','ক্র গ্র ঘ্র ট্র ড্র ত্র থ্র দ্র ধ্র ন্র প্র ব্র ভ্র ম্র শ্র স্র হ্র','কর্ম ধর্ম বর্ণ মর্যাদা','গ্রাম প্রথম ক্রম শ্রম','ত্র্য কর্তব্য সর্বত্র'],
+['৪.৮ তিন বর্ণের যুক্তাক্ষর','ন্ত্র ন্দ্র ন্ধ্র ন্ট্র ষ্ট্র ম্প্র ম্ব্র','স্ত্র স্ক্র স্প্র স্ফ্র ক্ত্র ত্ত্ব','ন্ত্য ন্দ্য ন্ধ্য ন্থ্য স্থ্য ষ্ঠ্য','মন্ত্র মন্ত্রী যন্ত্র স্বতন্ত্র','ইন্দ্র চন্দ্র সমুদ্র দরিদ্র','রাষ্ট্র শাস্ত্র অস্ত্র সূত্র','সান্ত্বনা প্রস্তুত বিস্ময় নক্ষত্র'],
+['৪.৯ মিশ্র অনুশীলন','সংস্কৃতি অন্তর্ভুক্ত ব্যবস্থাপনা','আত্মহত্যা প্রতিষ্ঠান সিদ্ধান্ত','নির্বাচন পরিস্থিতি উন্নতি','বিজ্ঞানের অগ্রগতি দেশের উন্নয়ন','শিক্ষাই জাতির মেরুদণ্ড।','সত্য কথা বলা মহৎ গুণ।','স্বাধীন দেশের স্বাধীন নাগরিক।']
+];
+{const i=BJL.findIndex(l=>/যুক্তবর্ণ/.test(l.t));JK.forEach(([t,...x],n)=>BJL.splice((i<0?BJL.length:i+1)+n,0,{t,L:'bj',i:x}))}
+function jchart(){const el=$('#jcc');if(!el||el.dataset.d)return;el.dataset.d=1;const m=IM.bj,seen=new Set;let h='';
+const lab=r=>[...r].map(c=>/[A-Z]/.test(c)?'⇧'+c.toLowerCase():c).join(' ');
+JK.forEach(([t,...x])=>{h+='<h4>'+esc(t)+'</h4>';x.join(' ').split(/\s+/).forEach(w=>{if(!w||seen.has(w))return;seen.add(w);if([...w].length>7||!/^[\u0995-\u09B9\u09CD]+$/.test(w))return;h+='<span><b>'+esc(w)+'</b><i>'+esc(lab(m.enc(w)))+'</i></span>'})});el.innerHTML=h}
+/* nav, keyboard status, fullscreen */
+let cur=null;
+function go(id){$$('section').forEach(s=>s.classList.toggle('on',s.id===id));$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.s===id));cur=E[id]||null;{const n=$('#nav'),a=$('#nav button.on');if(a)n.scrollLeft+=a.getBoundingClientRect().left-n.getBoundingClientRect().left-(n.clientWidth-a.offsetWidth)/2}stopDemo();if(id=='home')demo(KH,[...'sonia'],800);if(id=='basics')step(st);if(id=='sx')rsx();if(id=='pj')rpj();if(id=='lang'){rlg();jchart()}if(id=='home')rhg();$('main').scrollTop=0}
+$$('[data-s]').forEach(b=>b.onclick=()=>go(b.dataset.s));
+addEventListener('keydown',e=>{const s=$('#kst');if(!s.classList.contains('ok')){s.classList.add('ok');s.textContent='কিবোর্ড সংযুক্ত'}if(e.key=='Escape')$('#ov').classList.remove('on');if(cur&&!/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)&&!$('.ov.on'))cur.key(e)});
+/* settings ui */
+const og=(l,c)=>l.map(f=>'<option'+(f==c?' selected':'')+'>'+f+'</option>').join('');
+$('#sfb').innerHTML=og(['Hind Siliguri','Kalpurush','Noto Sans Bengali','Noto Serif Bengali','Baloo Da 2','Tiro Bangla','Anek Bangla','SolaimanLipi','Nikosh','Siyam Rupali','Shonar Bangla','Nirmala UI','Vrinda','Mukti','Lohit Bengali','AdorshoLipi','UserFont'],CF.fb);
+$('#sfe').innerHTML=og(['Hind Siliguri','Arial','Verdana','Tahoma','Georgia','Times New Roman','Courier New','JetBrains Mono','Fraunces','Calibri','Roboto','Open Sans'],CF.fe);
+$('#ssz').value=CF.sz;$('#sen').value=CF.enc;$('#sth').value=CF.th;$('#sgl').value=CF.goal;$('#sfs').checked=!!CF.fs;$('#sah').checked=!!CF.ah;$('#ct').value=CT.t;$('#cl').value=CT.L;
+const rf=()=>{ap();Object.values(E).forEach(m=>m.upd())};
+[['sfb','fb'],['sfe','fe'],['ssz','sz'],['sth','th'],['sgl','goal']].forEach(([i,k])=>$('#'+i).onchange=e=>{CF[k]=(k=='sz'||k=='goal')?+e.target.value:e.target.value;LS.s('cfg',CF);rf();rhg()});
+$('#sen').onchange=e=>{CF.enc=e.target.value;LS.s('cfg',CF);ens();rf()};
+$('#sfs').onchange=e=>{CF.fs=e.target.checked?1:0;LS.s('cfg',CF)};
+$('#sah').onchange=e=>{CF.ah=e.target.checked?1:0;LS.s('cfg',CF);if(!CF.ah)ahShow()};
+const UF=LS.g('uf',{}),lf=(n,u)=>new FontFace(n,'url('+u+')').load().then(f=>{document.fonts.add(f);chkSM()});
+Object.entries(UF).forEach(([n,u])=>lf(n,u).catch(()=>0));
+$('#ff').onchange=e=>{const f=e.target.files[0];if(!f)return;const n=$('#sfn').value,r=new FileReader();r.onload=()=>lf(n,r.result).then(()=>{if(n=='SutonnyMJ'){CF.enc='ansi'}else{CF.fb=n;$('#sfb').value=n}UF[n]=r.result;$('#fm').textContent=LS.s('uf',UF)?'ফন্ট যোগ হয়েছে ও সংরক্ষিত':'ফন্ট যোগ হয়েছে (শুধু এই সেশনে)';LS.s('cfg',CF);chkSM()}).catch(()=>{$('#fm').textContent='ফন্টটি লোড করা যায়নি'});r.readAsDataURL(f)};
+[['snd','o_snd'],['st','o_st'],['kb','o_kb'],['lb','o_lb'],['hn','o_hn'],['an','o_an']].forEach(([k,i])=>{const e=$('#'+i);e.checked=!!CF[k];e.onchange=()=>{CF[k]=e.checked?1:0;LS.s('cfg',CF);rf()}});
+$('#gear').onclick=()=>{dci();$('#ov').classList.add('on')};$('#sc').onclick=()=>$('#ov').classList.remove('on');$('#ov').onclick=e=>{if(e.target.id=='ov')e.target.classList.remove('on')};
+$('#cg').onclick=()=>{CT.t=$('#ct').value;CT.L=$('#cl').value;LS.s('ct',CT);Object.assign(PR[4],{L:CT.L,i:ck(CT.t)});E.pr.pick(4)};
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(b)b.blur()});
+/* auto fullscreen + wake lock */
+let fsd=0,wl=0;const au=force=>{const d=document.documentElement,f=d.requestFullscreen||d.webkitRequestFullscreen;
+if(!wl&&navigator.wakeLock){wl=1;navigator.wakeLock.request('screen').catch(()=>{wl=0})}
+if(!f||(force!==1&&(!CF.fs||fsd)))return;Promise.resolve(f.call(d)).then(()=>{fsd=1;try{screen.orientation.lock('landscape').catch(()=>0)}catch(e){}}).catch(()=>0)};
+['pointerup','keydown'].forEach(t=>addEventListener(t,au,{passive:true}));
+document.addEventListener('visibilitychange',()=>{wl=0});
+$('#fs').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else au(1)};
+const hasF=n=>{try{const c=document.createElement('canvas').getContext('2d'),t='mmmmmmmmmmlliWW@@';return['monospace','serif','sans-serif'].some(b=>{c.font='40px '+b;const w=c.measureText(t).width;c.font='40px "'+n+'",'+b;return c.measureText(t).width!=w})}catch(e){return 0}};
+const chkSM=()=>{const t=()=>{SM=hasF('SutonnyMJ')?1:0;ens();rf()};try{document.fonts.load('16px SutonnyMJ').then(t,t)}catch(e){t()}};
+
+/* ===== ডকুমেন্ট: Word-এর মতো বিজয় টাইপ + Office ইমপোর্ট/এক্সপোর্ট ===== */
+const CRC=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return b=>{let c=-1;for(const x of b)c=t[(c^x)&255]^(c>>>8);return(c^-1)>>>0}})();
+function zipW(fs){const te=new TextEncoder(),P=[],C=[];let off=0,cs=0;for(const[n,s]of fs){const nb=te.encode(n),d=te.encode(s),c=CRC(d),h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,1);h.setUint16(4,20,1);h.setUint16(6,0x800,1);h.setUint32(14,c,1);h.setUint32(18,d.length,1);h.setUint32(22,d.length,1);h.setUint16(26,nb.length,1);P.push(h,nb,d);
+const e=new DataView(new ArrayBuffer(46));e.setUint32(0,0x02014b50,1);e.setUint16(4,20,1);e.setUint16(6,20,1);e.setUint16(8,0x800,1);e.setUint32(16,c,1);e.setUint32(20,d.length,1);e.setUint32(24,d.length,1);e.setUint16(28,nb.length,1);e.setUint32(42,off,1);C.push(e,nb);off+=30+nb.length+d.length;cs+=46+nb.length}
+const z=new DataView(new ArrayBuffer(22));z.setUint32(0,0x06054b50,1);z.setUint16(8,fs.length,1);z.setUint16(10,fs.length,1);z.setUint32(12,cs,1);z.setUint32(16,off,1);return new Blob([...P,...C,z])}
+async function zipR(buf){const v=new DataView(buf),u=new Uint8Array(buf),td=new TextDecoder();let e=u.length-22;while(e>=0&&v.getUint32(e,1)!=0x06054b50)e--;if(e<0)throw 0;const n=v.getUint16(e+10,1),F={};let p=v.getUint32(e+16,1);
+for(let i=0;i<n;i++){const m=v.getUint16(p+10,1),cz=v.getUint32(p+20,1),nl=v.getUint16(p+28,1),xl=v.getUint16(p+30,1),cm=v.getUint16(p+32,1),lo=v.getUint32(p+42,1),nm=td.decode(u.subarray(p+46,p+46+nl));p+=46+nl+xl+cm;
+F[nm]=async()=>{const s=lo+30+v.getUint16(lo+26,1)+v.getUint16(lo+28,1),d=u.subarray(s,s+cz);if(!m)return td.decode(d);return td.decode(await new Response(new Blob([d]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer())}}return F}
+const wcol=v=>{const m=/rgb\((\d+), *(\d+), *(\d+)/.exec(v||'');return m?[1,2,3].map(i=>(+m[i]).toString(16).padStart(2,'0')).join(''):/^#[0-9a-f]{6}$/i.test(v||'')?v.slice(1):''};
+const rpr=s=>'<w:rFonts w:ascii="'+esc(s.f||'Calibri')+'" w:hAnsi="'+esc(s.f||'Calibri')+'" w:cs="'+esc(s.f||'Nirmala UI')+'"/>'+(s.b?'<w:b/><w:bCs/>':'')+(s.i?'<w:i/><w:iCs/>':'')+(s.s?'<w:strike/>':'')+(s.c?'<w:color w:val="'+s.c+'"/>':'')+'<w:sz w:val="'+s.z+'"/><w:szCs w:val="'+s.z+'"/>'+(s.u?'<w:u w:val="single"/>':'');
+function d2x(root){const BLK=/^(P|DIV|H[1-6]|UL|OL|TABLE|BLOCKQUOTE)$/;
+const ws=(n,s)=>{s={...s};const t=n.tagName,y=n.style||{},d=(y.textDecorationLine||'')+(y.textDecoration||'');if(/^(B|STRONG)$/.test(t)||/bold|[6-9]00/.test(y.fontWeight))s.b=1;if(/^(I|EM)$/.test(t)||y.fontStyle=='italic')s.i=1;if(t=='U'||/underline/.test(d))s.u=1;if(/^(S|STRIKE|DEL)$/.test(t)||/line-through/.test(d))s.s=1;if(y.fontFamily)s.f=y.fontFamily.split(',')[0].replace(/["']/g,'').trim();if(/px$/.test(y.fontSize||''))s.z=Math.round(parseFloat(y.fontSize)*1.5);if(y.color)s.c=wcol(y.color);if(t=='FONT'){if(n.face)s.f=n.face;if(n.color)s.c=wcol(n.color)}return s};
+const rn=(n,s)=>{if(n.nodeType==3)return n.data?'<w:r><w:rPr>'+rpr(s)+'</w:rPr><w:t xml:space="preserve">'+esc(n.data)+'</w:t></w:r>':'';if(n.nodeType!=1||BLK.test(n.tagName)||n.tagName=='LI')return'';if(n.tagName=='BR')return'<w:r><w:br/></w:r>';const t=ws(n,s);return[...n.childNodes].map(c=>rn(c,t)).join('')};
+const pa=(n,s,pre)=>{const al={center:'center',right:'right',justify:'both'}[n.style&&n.style.textAlign]||'',k=n.childNodes,e=k.length==1&&k[0].tagName=='BR';return'<w:p><w:pPr>'+(al?'<w:jc w:val="'+al+'"/>':'')+'</w:pPr>'+(pre?rn(document.createTextNode(pre),s):'')+(e?'':[...k].map(c=>rn(c,s)).join(''))+'</w:p>'};
+const bl=(n,s)=>{let o='',b=[];const fl=()=>{if(b.length){const x=b.map(c=>rn(c,s)).join('');if(x||b.some(c=>c.tagName=='BR'))o+='<w:p>'+x+'</w:p>';b=[]}};for(const c of n.childNodes){if(c.nodeType==1&&BLK.test(c.tagName)){fl();o+=bk(c,s)}else b.push(c)}fl();return o};
+const bk=(n,s)=>{const t=n.tagName,s2=ws(n,s);if(t=='UL'||t=='OL')return[...n.children].map((li,i)=>pa(li,ws(li,s2),t=='UL'?'• ':(i+1)+'. ')).join('');
+if(t=='TABLE')return'<w:tbl><w:tblPr><w:tblBorders>'+['top','left','bottom','right','insideH','insideV'].map(k=>'<w:'+k+' w:val="single" w:sz="4" w:color="999999"/>').join('')+'</w:tblBorders></w:tblPr><w:tblGrid>'+[...n.rows[0].cells].map(()=>'<w:gridCol w:w="2000"/>').join('')+'</w:tblGrid>'+[...n.rows].map(r=>'<w:tr>'+[...r.cells].map(c=>'<w:tc><w:tcPr><w:tcW w:w="2000" w:type="dxa"/></w:tcPr>'+(bl(c,s2)||'<w:p/>')+'</w:tc>').join('')+'</w:tr>').join('')+'</w:tbl><w:p/>';
+if(/^H[1-3]$/.test(t)){s2.b=1;s2.z={H1:40,H2:32,H3:28}[t]}return[...n.children].some(c=>BLK.test(c.tagName))?bl(n,s2):pa(n,s2)};
+return bl(root,{z:24})}
+async function dx2h(buf){const F=await zipR(buf),doc=new DOMParser().parseFromString(await F['word/document.xml'](),'application/xml'),g=(e,t)=>[...e.getElementsByTagName(t)],val=(e,t)=>{const x=g(e,t)[0];return x?x.getAttribute('w:val'):null};
+const rp=r=>{const p=g(r,'w:rPr')[0];if(!p)return'';const on=t=>{const x=g(p,t)[0];return x&&!/^(0|false)$/.test(x.getAttribute('w:val')||'')};let s='',d='';if(on('w:b'))s+='font-weight:bold;';if(on('w:i'))s+='font-style:italic;';if(on('w:u'))d+='underline ';if(on('w:strike'))d+='line-through';if(d)s+='text-decoration:'+d+';';const c=val(p,'w:color'),z=val(p,'w:sz');if(c&&c!='auto')s+='color:#'+c+';';if(z)s+='font-size:'+(z/1.5)+'px;';return s};
+const pr=p=>{let o='';for(const r of g(p,'w:r')){let t='';for(const c of r.children){if(c.tagName=='w:t')t+=esc(c.textContent);else if(c.tagName=='w:tab')t+='&nbsp;&nbsp;&nbsp;&nbsp;';else if(c.tagName=='w:br')t+='<br>'}if(t){const s=rp(r);o+=s?'<span style="'+s+'">'+t+'</span>':t}}return o};
+const pa=p=>{const h=/^Heading([1-3])$/i.exec(val(p,'w:pStyle')||''),al={center:'center',right:'right',both:'justify'}[val(p,'w:jc')],tg=h?'h'+h[1]:'p';return'<'+tg+(al?' style="text-align:'+al+'"':'')+'>'+(g(p,'w:numPr')[0]?'• ':'')+(pr(p)||'<br>')+'</'+tg+'>'};
+let o='';for(const e of g(doc,'w:body')[0].children){if(e.tagName=='w:p')o+=pa(e);else if(e.tagName=='w:tbl')o+='<table>'+[...e.children].filter(r=>r.tagName=='w:tr').map(r=>'<tr>'+[...r.children].filter(c=>c.tagName=='w:tc').map(c=>'<td>'+g(c,'w:p').map(pa).join('')+'</td>').join('')+'</tr>').join('')+'</table>'}return o}
+async function xl2h(buf){const F=await zipR(buf),P=s=>new DOMParser().parseFromString(s,'application/xml'),ss=F['xl/sharedStrings.xml']?[...P(await F['xl/sharedStrings.xml']()).getElementsByTagName('si')].map(s=>s.textContent):[];let o='';
+for(const k of Object.keys(F).filter(k=>/^xl\/worksheets\/sheet\d+\.xml$/.test(k)).sort()){o+='<table>'+[...P(await F[k]()).getElementsByTagName('row')].map(r=>{const a=[];[...r.getElementsByTagName('c')].forEach(c=>{let ci=0;for(const ch of/^[A-Z]+/.exec(c.getAttribute('r')||'A')[0])ci=ci*26+ch.charCodeAt(0)-64;const v=c.getElementsByTagName('v')[0],t=c.getAttribute('t');a[ci-1]=t=='s'&&v?ss[+v.textContent]:t=='inlineStr'?c.textContent:v?v.textContent:''});return'<tr>'+Array.from(a,x=>'<td>'+esc(x||'')+'</td>').join('')+'</tr>'}).join('')+'</table><p><br></p>'}return o}
+const csv2h=t=>{const R=[];let r=[],c='',q=0;for(let i=0;i<t.length;i++){const x=t[i];if(q){if(x=='"'){if(t[i+1]=='"'){c+='"';i++}else q=0}else c+=x}else if(x=='"')q=1;else if(x==','||x=='\t'){r.push(c);c=''}else if(x=='\n'||x=='\r'){if(x=='\r'&&t[i+1]=='\n')i++;r.push(c);R.push(r);r=[];c=''}else c+=x}if(c||r.length){r.push(c);R.push(r)}return'<table>'+R.map(r=>'<tr>'+r.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</table><p><br></p>'};
+const san=h=>{const d=new DOMParser().parseFromString(h,'text/html');d.querySelectorAll('script,style,iframe,object,embed,link,meta,form,title').forEach(e=>e.remove());d.body.querySelectorAll('*').forEach(e=>[...e.attributes].forEach(a=>{if(/^on/i.test(a.name)||/^\s*javascript:/i.test(a.value))e.removeAttribute(a.name)}));return d.body.innerHTML||'<p><br></p>'};
+/* editor ui */
+const ic=n=>'<svg class="i"><use href="#i-'+n+'"/></svg>',SP='<i class="sp"></i>',ed=$('#wd'),wtt=()=>$('#wtt'),FL=['Hind Siliguri','Kalpurush','Noto Sans Bengali','Noto Serif Bengali','Nirmala UI','SolaimanLipi','Siyam Rupali','Arial','Times New Roman','Calibri','Courier New'];
+$('#wt1').innerHTML='<input type="text" id="wtt" placeholder="ডকুমেন্টের নাম"><button id="wnw">'+ic('doc')+' নতুন</button><label class="bt">'+ic('open')+' খুলুন<input type="file" id="wo" hidden accept=".docx,.xlsx,.csv,.tsv,.txt,.html,.htm,.doc"></label><select id="wx"><option value="">এক্সপোর্ট…</option><option value="docx">Word (.docx)</option><option value="doc">Word 97–2003 (.doc)</option><option value="pdf">PDF (প্রিন্ট থেকে)</option><option value="html">ওয়েব পেজ (.html)</option><option value="txt">সাধারণ টেক্সট (.txt)</option></select>'+SP+'<select id="wmd"><option value="bj">বাংলা — বিজয়</option><option value="ph">বাংলা — ফোনেটিক</option><option value="en">English</option></select>';
+$('#wt2').innerHTML=[['undo','undo'],['redo','redo2']].map(([c,i])=>'<button data-c="'+c+'">'+ic(i)+'</button>').join('')+SP+'<select id="wfs">'+og(FL,'Hind Siliguri')+'</select><select id="wsz">'+[10,11,12,14,16,18,20,24,28,32,40].map(n=>'<option'+(n==12?' selected':'')+'>'+n+'</option>').join('')+'</select><select id="wbk"><option value="p">অনুচ্ছেদ</option><option value="h1">শিরোনাম ১</option><option value="h2">শিরোনাম ২</option><option value="h3">শিরোনাম ৩</option></select>'+SP+'<button data-c="bold"><b>B</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>U</u></button><button data-c="strikeThrough"><s>S</s></button><input type="color" id="wkc" value="#1b1b1b" title="লেখার রং">'+SP+[['justifyLeft','al'],['justifyCenter','ac'],['justifyRight','ar'],['justifyFull','aj'],['insertUnorderedList','ul'],['insertOrderedList','ol']].map(([c,i])=>'<button data-c="'+c+'">'+ic(i)+'</button>').join('');
+let wm=LS.g('wm','bj'),wlast=wm=='en'?'bj':wm,run=null,busy=0,sv=null,wtm;
+const wmsg=m=>{$('#wms').textContent=m},cnt=()=>{const t=ed.innerText.trim();$('#wc').textContent=(t?t.split(/\s+/).length:0)+' শব্দ · '+[...t.replace(/\s/g,'')].length+' অক্ষর';clearTimeout(wtm);wtm=setTimeout(()=>LS.s('wdoc',{t:wtt().value,h:ed.innerHTML}),500)};
+function setm(m){wm=m;if(m!='en')wlast=m;LS.s('wm',m);$('#wmd').value=m;run=null;wmsg(m=='en'?'English টাইপ':m=='bj'?'বিজয় চালু — কিবোর্ডে চাপলেই বাংলা':'ফোনেটিক চালু')}
+const cmd=(c,v)=>{ed.focus();if(sv){const s=getSelection();s.removeAllRanges();s.addRange(sv)}document.execCommand(c,false,v);run=null;cnt()};
+function put(tx,r){const s=getSelection();s.removeAllRanges();s.addRange(r);busy=1;document.execCommand(tx?'insertText':'delete',false,tx);busy=0;const a=s.anchorNode;run=tx&&a&&a.nodeType==3&&s.isCollapsed?{n:a,s:s.anchorOffset-tx.length,l:tx.length,raw:run.raw}:null}
+function feed(c){const s=getSelection();if(!s.rangeCount)return;let r=s.getRangeAt(0);if(!r.collapsed){r.deleteContents();run=null;r=s.getRangeAt(0)}let n=r.startContainer,o=r.startOffset;
+if(!(run&&run.n===n&&n.nodeType==3&&o==run.s+run.l)){if(n.nodeType!=3){const t=document.createTextNode('');r.insertNode(t);n=t;o=0}run={n,s:o,l:0,raw:''}}
+run.raw+=c;const g=document.createRange();g.setStart(run.n,run.s);g.setEnd(run.n,run.s+run.l);put(IM[wm=='ph'?'bn':wm].conv(run.raw),g)}
+ed.addEventListener('beforeinput',e=>{if(busy||wm=='en'||e.isComposing)return;const t=e.inputType,c=e.data;
+if(t=='insertText'&&c&&c.length==1&&c.charCodeAt(0)<128&&(wm=='bj'?c in IM.bj.M:/[A-Za-z:^.]/.test(c))){e.preventDefault();feed(c);cnt();return}
+if(t=='deleteContentBackward'&&run&&run.raw){const s=getSelection();if(s.isCollapsed&&s.anchorNode===run.n&&s.anchorOffset==run.s+run.l){e.preventDefault();run.raw=run.raw.slice(0,-1);const g=document.createRange();g.setStart(run.n,run.s);g.setEnd(run.n,run.s+run.l);put(run.raw?IM[wm=='ph'?'bn':wm].conv(run.raw):'',g);cnt();return}}run=null});
+ed.addEventListener('keydown',e=>{if(e.ctrlKey&&e.code=='Space'){e.preventDefault();setm(wm=='en'?wlast:'en')}});
+document.addEventListener('selectionchange',()=>{const s=getSelection();if(!s.rangeCount||!ed.contains(s.anchorNode))return;sv=s.getRangeAt(0).cloneRange();if(run&&!(s.isCollapsed&&s.anchorNode===run.n&&s.anchorOffset==run.s+run.l))run=null});
+ed.addEventListener('input',cnt);
+$('#wt2').addEventListener('mousedown',e=>{if(e.target.closest('button'))e.preventDefault()});
+$('#wt2').onclick=e=>{const b=e.target.closest('button');if(b)cmd(b.dataset.c)};
+$('#wfs').onchange=e=>cmd('fontName',e.target.value);
+$('#wkc').oninput=e=>cmd('foreColor',e.target.value);
+$('#wbk').onchange=e=>cmd('formatBlock',e.target.value);
+$('#wsz').onchange=e=>{const px=e.target.value*4/3;cmd('fontSize',7);$$('span,font',ed).forEach(x=>{if(x.style.fontSize=='xxx-large'||x.getAttribute('size')=='7'){x.removeAttribute('size');x.style.fontSize=px+'px'}});cnt()};
+$('#wmd').onchange=e=>setm(e.target.value);
+$('#wnw').onclick=()=>{if(ed.innerText.trim()&&!confirm('নতুন ডকুমেন্ট খুলবেন? বর্তমান লেখা মুছে যাবে।'))return;ed.innerHTML='<p><br></p>';wtt().value='';cnt();ed.focus()};
+$('#wo').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const ext=f.name.split('.').pop().toLowerCase();try{let h;if(ext=='docx')h=await dx2h(await f.arrayBuffer());else if(ext=='xlsx')h=await xl2h(await f.arrayBuffer());else{const t=await f.text();h=/^\s*<(!doctype|html|body|p|div|table)/i.test(t)?san(t):/^(csv|tsv)$/.test(ext)?csv2h(t):t.split(/\r?\n/).map(l=>'<p>'+(esc(l)||'<br>')+'</p>').join('')}ed.innerHTML=h||'<p><br></p>';wtt().value=f.name.replace(/\.[^.]+$/,'');cnt();wmsg('খোলা হয়েছে: '+f.name)}catch(x){wmsg(ext=='doc'?'পুরোনো বাইনারি .doc পড়া যায় না — Word-এ .docx হিসেবে সেভ করে খুলুন':'ফাইলটি পড়া যায়নি')}};
+const dlb=(b,n)=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4e3)};
+$('#wx').onchange=e=>{const k=e.target.value;e.target.value='';if(!k)return;const n=wtt().value.trim()||'document',B='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',
+full=o=>'<!DOCTYPE html><html '+(o?'xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" ':'')+'lang="bn"><head><meta charset="utf-8"><title>'+esc(n)+'</title><style>body{font:16px/1.7 "Hind Siliguri","Noto Sans Bengali","Nirmala UI",Calibri,sans-serif;max-width:800px;margin:24px auto;padding:0 16px}table{border-collapse:collapse}td{border:1px solid #999;padding:4px 8px}</style></head><body>'+ed.innerHTML+'</body></html>';
+if(k=='docx')dlb(zipW([['[Content_Types].xml',B+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>'],['_rels/.rels',B+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'],['word/document.xml',B+'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+d2x(ed)+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr></w:body></w:document>']]),n+'.docx');
+else if(k=='doc')dlb(new Blob(['\ufeff'+full(1)],{type:'application/msword'}),n+'.doc');
+else if(k=='html')dlb(new Blob([full()],{type:'text/html'}),n+'.html');
+else if(k=='txt')dlb(new Blob(['\ufeff'+ed.innerText],{type:'text/plain'}),n+'.txt');
+else{const f=document.createElement('iframe');f.style.cssText='position:fixed;width:0;height:0;border:0';document.body.append(f);f.onload=()=>{f.contentWindow.print();setTimeout(()=>f.remove(),2e4)};f.srcdoc=full()}
+wmsg('এক্সপোর্ট: '+k.toUpperCase())};
+{const d=LS.g('wdoc',null);ed.innerHTML=d&&d.h?d.h:'<p><br></p>';if(d)wtt().value=d.t||'';try{document.execCommand('styleWithCSS',false,true);document.execCommand('defaultParagraphSeparator',false,'p')}catch(x){}ed.style.fontFamily='';setm(wm);cnt()}
+ens();ap();rhg();chkSM();
+go('home');
+/* data clear options */
+const DC={sx:{k:['sx','wk'],n:'পরিসংখ্যান ও ইতিহাস',q:'সব সেশন, গতি-নির্ভুলতার ইতিহাস, ধারাবাহিকতা ও দুর্বল কি মুছে যাবে।'},wk:{k:['wk'],n:'দুর্বল কি',q:'দুর্বল কি-র তালিকা মুছে যাবে।'},pj:{k:['pj','pjd','ct'],n:'প্রজেক্ট ও নিজের লেখা',q:'সব সেভ করা প্রজেক্ট ও “নিজের লেখা” মুছে যাবে।'},wdoc:{k:['wdoc'],n:'ডকুমেন্ট',q:'ডকুমেন্ট পেজের লেখা মুছে যাবে।'},uf:{k:['uf'],n:'যোগ করা ফন্ট',q:'আপনার যোগ করা ফন্ট ফাইল মুছে যাবে।'},cfg:{k:['cfg'],n:'সেটিংস',q:'সব সেটিংস শুরুর অবস্থায় ফিরবে।'},all:{k:null,n:'সব ডেটা',q:'সেটিংস, পরিসংখ্যান, প্রজেক্ট, ডকুমেন্ট ও ফন্ট — সব মুছে যাবে।'}};
+const dci=()=>{let b=0;try{Object.keys(localStorage).filter(k=>k.startsWith('otg.')).forEach(k=>b+=k.length+(localStorage.getItem(k)||'').length)}catch(e){}const kb=b*2/1024;$('#dcs').textContent='সেশন '+SX.length+' · প্রজেক্ট '+PJ.length+' · সংরক্ষিত ডেটা প্রায় '+(kb>1024?(kb/1024).toFixed(1)+' MB':kb.toFixed(1)+' KB')};
+$('#dcl').onclick=e=>{const b=e.target.closest('button[data-c]');if(!b)return;const id=b.dataset.c,c=DC[id];
+if(!confirm(c.n+' মুছবেন?\n'+c.q+'\nএটা ফেরানো যাবে না। চাইলে আগে “সব ডেটা ডাউনলোড” দিয়ে ব্যাকআপ রাখুন। পেজ রিলোড হবে।'))return;
+if(id=='all'&&!confirm('শেষবার নিশ্চিত করুন: সব ডেটা মুছে ফেলবেন?'))return;
+clearTimeout(wtm);
+try{if(id=='uf'){const nm=Object.keys(UF);if(nm.includes(CF.fb))CF.fb='Hind Siliguri';if(nm.includes('SutonnyMJ'))CF.enc='uni';LS.s('cfg',CF)}
+(c.k||Object.keys(localStorage).filter(k=>k.startsWith('otg.')).map(k=>k.slice(4))).forEach(k=>localStorage.removeItem('otg.'+k));
+sessionStorage.setItem('otg.msg',c.n+' মুছে ফেলা হয়েছে')}catch(x){}
+location.reload()};
+{let m=null;try{m=sessionStorage.getItem('otg.msg');sessionStorage.removeItem('otg.msg')}catch(e){}if(m){const t=$('#toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2800)}}
+</script></body></html>
